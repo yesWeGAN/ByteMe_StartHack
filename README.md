@@ -1,3 +1,21 @@
+# ByteMe: GrüeziBot
+## Architecture
+#### Speech2Text / Text2Speech
+We use OpenAI Whisper German-Swiss 
+https://huggingface.co/ss0ffii/whisper-small-german-swiss
+to map the user's voice into string queries.  
+
+#### LangChain vector store for query vector search against database
+We embed the 3.5k departmental text files using SentenceBERT for rapid prototyping. 
+Perspectively, this could be replaced by way more advanced ChatGPT-embeddings (at the cost 3500 documents x mean(len(doc))) for more precise document matching and improved performance.  
+  
+We choose FAISS index over Chroma/others (https://medium.com/@stepkurniawan/comparing-faiss-with-chroma-vector-stores-0953e1e619eb) due to better and faster inference.  
+
+
+
+
+
+
 # <p align="center"> Canton of St. Gallen </p>
 
 ![St.Gallen](https://github.com/START-Hack/CantonOfStGallen_STARTHACK24/blob/98bb6ef9dbdeaeb5fc7fa611bccf5c0df75c14a5/Regierungsgeba%CC%88ude_CMS.jpg)
