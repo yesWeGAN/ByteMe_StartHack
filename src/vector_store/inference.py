@@ -29,6 +29,8 @@ class KNNIndexInference:
         self.batchsize = batchsize
         self.dataset = dataset
         self.index = self.find_indexfile()
+        self.clear_snippets = self.find_jsonfile(regex="snippets")
+        self.contact_persons = self.find_jsonfile(regex="contacts")
 
     def find_indexfile(self):
         try:
@@ -54,12 +56,21 @@ class KNNIndexInference:
         )
         return embedder
 
-    def find_jsonfile(self):
+    def find_jsonfile(self, regex: str):
+        """This is the method that loads the json-files that correspond to the built index.
+        They contain the clear text snippets, and whatever else is listed (contact person)
+
+        Args:
+            regex (str): identify which file you're looking for. 
+
+        Returns:
+            _type_: JSON-filecontent (list)
+        """
         try:
-            filep = next(Path(self.dataset).rglob("**/filepath_index.json"))
+            filep = next(Path(self.dataset).rglob(f"*{regex}s*.json"))
             return json.load(open(filep, "r"))
         except StopIteration:
-            raise FileNotFoundError("No json file found. Exiting.")
+            raise FileNotFoundError(f"No json file found for regex {regex}. Exiting.")
 
     def embed_query(self, query: str, max_tokens: int):
         embedded_query = self.embedder.encode(query, convert_to_tensor=True)
@@ -137,7 +148,7 @@ class KNNSimpleInference:
         )
         return embedder
 
-    def inference(self, query: str, k=5):
+    def inference(self, query: str, k=5, printprop=True):
         """Inference iterating over a stack of embeddings. No index search.
 
         Args:
@@ -154,18 +165,19 @@ class KNNSimpleInference:
 
             results = zip(range(len(distances)), distances)
             results = sorted(results, key=lambda x: x[1])
-
-            print("\n\n======================\n\n")
-            print("Query:", query)
-            print("\nTop 5 most similar sentences in corpus:")
+            if printprop:
+                print("\n\n======================\n\n")
+                print("Query:", query)
+                print("\nTop 5 most similar sentences in corpus:")
             result_distances = []
             result_questions = []
             result_answers = []
             for idx, distance in results[0:k]:
-                print(f"The cosine similarity score for the following Q-A-pair is: %.4f % (1-distance))")
-                print(self.clear_input_questions[idx].strip())
-                print(self.clear_input_answers[idx].strip())
-                result_distances.append(distance)
+                if printprop:
+                    print(f"The cosine similarity score for the following Q-A-pair is: %.4f % (1-distance))")
+                    print(self.clear_input_questions[idx].strip())
+                    print(self.clear_input_answers[idx].strip())
+                result_distances.append(1-distance)
                 result_questions.append(self.clear_input_questions[idx].strip())
                 result_answers.append(self.clear_input_answers[idx].strip())
             
