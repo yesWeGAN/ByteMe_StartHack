@@ -4,15 +4,43 @@ import re
 from bs4 import BeautifulSoup
 import html
 
-# Clean text function
 def postprocess_strings(string):
     string = string.replace("\t", "").replace("\n", "")
+    string = string.replace("&auml;", "ä")
+    string = string.replace("&ouml;", "ö")
+    string = string.replace("&uuml;", "ü")
+    string = string.replace("&Auml;", "Ä")
+    string = string.replace("&Ouml;", "Ö")
+    string = string.replace("&Uuml;", "Ü")
+    string = string.replace("&szlig;", "ß")
+
+    string = string.replace("Ã¼", "ü")
+    string = string.replace("Ã¤", "ä")
+    string = string.replace("Ã¶", "ö")
+    string = string.replace("Ãœ", "Ü")
+    string = string.replace("Ã„", "Ä")
+    string = string.replace("Ã–", "Ö")
+    string = string.replace("ÃŸ", "ß")
+    string = string.replace("Ã", "Ü")
+    
+    # If the text includes encoded characters, use the 'html.unescape()' function
     string = html.unescape(string)
     return string
 
-# Make sure title text is safe to use as a filename
+# Function to handle German special characters
+def convert_umlauts(title):
+    umlauts = {'ä': 'ae', 'ö': 'oe', 'ü': 'ue', 'ß': 'ss', 'Ä': 'Ae', 'Ö': 'Oe', 'Ü': 'Ue'}
+    
+    for umlaut, replacement in umlauts.items():
+        if umlaut in title:
+            title = title.replace(umlaut, replacement)
+            
+    return title
+
+# Function to clean title to be used as a filename
 def clean_title(title_text):
-    return re.sub(r'\W+', '_', title_text)
+    title_text = convert_umlauts(title_text)
+    return re.sub(r'[\\/*?:"<>|]', '', title_text)
 
 # Directory to save JSON files
 json_dir = 'html_info'
@@ -88,8 +116,17 @@ def parse_html(file_path):
         'Telefonnummer': phone,
         'Email': email
     }
+    
+        # Funktion zur Bereinigung des Titels zur Verwendung als Dateiname
+    def clean_title(title_text):
+        title_text = convert_umlauts(title_text)
+        title_text = title_text.replace(' ', '_')  # Ersetzt Leerzeichen durch Unterstriche
+        return re.sub(r'[\\/*?:"<>|]', '', title_text)  # Entfernt Zeichen, die in Dateinamen nicht zulässig sind
 
+    # Dann bleibt die Erstellung der JSON-Datei unverändert:
     json_file = os.path.join(json_dir, clean_title(title) + '.json')
+    
+    # json_file = os.path.join(json_dir, clean_title(title) + '.json')
 
     # Write data dictionary to JSON file
     with open(json_file, 'w', encoding='utf-8') as f:
