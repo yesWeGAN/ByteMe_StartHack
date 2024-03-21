@@ -27,13 +27,14 @@ simpleInf = KNNSimpleInference(inputpath=raw_data_path,
 
 def respond_to_caller():
     # greet the user with a prerecorded message
-    play_audio(r'/home/benjaminkroeger/Documents/Hackathons/StartHack24/ByteMe_StartHack/src/St_gallen_welcome.wav')
+    # play_audio(r'/home/benjaminkroeger/Documents/Hackathons/StartHack24/ByteMe_StartHack/src/St_gallen_welcome.wav')
     caller_response = record_and_transcribe(recorder=recorder)
 
+    # sort search results
     answers, questions, dists = simpleInf.inference(query=caller_response, k=5, printprop=False)
     answers,questions = filter_hits_threshold(answers=answers,questions=questions,scores=dists,threshold=0.5)
     summary_str = create_summary_str(answers=answers,questions=questions,original_question=caller_response)
-
+    logger.debug(summary_str)
     ai_summary = call_endpoints.summarize_search(summary_str)
     logger.debug(ai_summary)
 
@@ -42,7 +43,9 @@ def respond_to_caller():
     response_file_wav = convert_mp3_to_wav(response_file)
     logger.debug('Stored response in {response_file_wav}')
     play_audio(response_file_wav)
+
     time.sleep(1)
+
     play_audio(r'/home/benjaminkroeger/Documents/Hackathons/StartHack24/ByteMe_StartHack/src/satisfaction_inquiry.wav')
     satisfaction_respone = record_and_transcribe(recorder=recorder)
 

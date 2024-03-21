@@ -12,3 +12,9 @@ def create_summary_str(questions: list[str], answers: list[str],original_questio
     summary_str = original_question + summary_str
 
     return summary_str
+
+def find_contact(contact_url:str,contact_dict:dict):
+    pass
+
+
+
