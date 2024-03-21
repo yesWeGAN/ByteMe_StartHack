@@ -5,9 +5,9 @@ import json
 from pathlib import Path
 from sentence_transformers import SentenceTransformer
 import torch
-model = SentenceTransformer('multilingual-e5-large-instruct')
+model = SentenceTransformer('intfloat/multilingual-e5-large-instruct')
 
-json_dir = "src/json_files/kb"
+json_dir = "/home/benjaminkroeger/Documents/Hackathons/StartHack24/ByteMe_StartHack/src/json_files/kb"
 json_files = Path(json_dir).rglob("*.json")
 index = 0
 questions = []
