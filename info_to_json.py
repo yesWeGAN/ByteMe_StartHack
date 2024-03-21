@@ -89,8 +89,11 @@ def parse_html(file_path):
         'Telefonnummer': phone,
         'Email': email
     }
+    
+    elements = file_path.split("/Users/FrankTheTank/Downloads/")[-1].split(".html")[0].split("/")
+    title="_".join(elements)
+    json_file = os.path.join(json_dir, title + '.json')
 
-    json_file = os.path.join(json_dir, clean_title(title) + '.json')
 
     # Write data dictionary to JSON file
     with open(json_file, 'w', encoding='utf-8') as f:
