@@ -86,12 +86,12 @@ class KNNIndexTrainer:
             os.remove(block)
 
 
-raw_data_path = "/Users/FrankTheTank/start/ByteMe_StartHack/src/raw_stacks"
+raw_data_path = "raw_stacks"
 
 trainer = KNNIndexTrainer(
     inputpath=raw_data_path,
     batchsize=100,
-    outputpath="/Users/FrankTheTank/start/ByteMe_StartHack/src/index_files",
+    outputpath="src/index_files",
     index_of_what='q'
 )
 len(trainer.clear_input_answers)    # 125

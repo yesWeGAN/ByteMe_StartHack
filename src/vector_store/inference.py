@@ -171,10 +171,10 @@ class KNNSimpleInference:
             
         return result_answers, result_questions, result_distances
             
-
-raw_data_path = "/Users/FrankTheTank/start/ByteMe_StartHack/src/raw_stacks"
+# TODO: 
+raw_data_path = "src/raw_stacks"
 simpleInf = KNNSimpleInference(    inputpath=raw_data_path,
-    outputpath="/Users/FrankTheTank/start/ByteMe_StartHack/src/index_files",
+    outputpath="src/index_files",
     index_of_what='q'
 )
 simpleInf.inference(query="Ich werde beschuldigt, kann ich einen Anwalt einschalten?", k=5)
