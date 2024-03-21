@@ -68,7 +68,8 @@ def check_satisfaction(customer_satisfaction_answer: str) -> str:
         messages=[
             {"role": "system",
              "content": "Du bist ein assistent der nur mit 'JA' oder 'Nein' antwortet und evaluiert ob ein Kunde"
-                        " mit einem menschlichen Mitarbeiter verbunden werden möchte.Du antwortest Ja wenn der Kunde unzufrieden ist."},
+                        " mit einem menschlichen Mitarbeiter verbunden werden möchte.Du antwortest Ja wenn der Kunde unzufrieden ist, allerdings mit"
+                        " Nein wenn er äußert, dass er auflegen möchte"},
             {"role": "user", "content": customer_satisfaction_answer},
         ]
     )
