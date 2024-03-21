@@ -1,14 +1,12 @@
-import os
-import re
-
-from speech_utils.record_voice import Recorder
-from utils.logger import get_logging_config
-from utils.audio_conversion import convert_wav_to_mp3, convert_mp3_to_wav
-from openai_interface import call_endpoints
-from speech_utils.text_to_speech import play_audio
-from speech_utils.speech_to_text import record_and_transcribe
-from utils.audio_conversion import convert_mp3_to_wav
 import logging.config
+import re
+import time
+
+from openai_interface import call_endpoints
+from speech_utils.record_voice import Recorder
+from speech_utils.speech_to_text import record_and_transcribe
+from utils.audio_conversion import convert_mp3_to_wav,play_audio
+from utils.logger import get_logging_config
 
 logging.config.dictConfig(get_logging_config())
 logger = logging.getLogger(__name__)
@@ -22,7 +20,7 @@ recorder = Recorder(input_dir)
 def respond_to_caller():
     # greet the user with a prerecorded message
 
-    play_audio(r'/home/benjaminkroeger/Documents/Hackathons/StartHack24/ByteMe_StartHack/speech_utils/St_gallen_welcome.wav')
+    play_audio(r'/home/benjaminkroeger/Documents/Hackathons/StartHack24/ByteMe_StartHack/src/St_gallen_welcome.wav')
     caller_response = record_and_transcribe(recorder=recorder)
 
 
@@ -33,8 +31,8 @@ def respond_to_caller():
     response_file_wav = convert_mp3_to_wav(response_file)
     logger.debug('Stored response in {response_file_wav}')
     play_audio(response_file_wav)
-
-    play_audio(r'/home/benjaminkroeger/Documents/Hackathons/StartHack24/ByteMe_StartHack/speech_utils/satisfaction_inquiry.wav')
+    time.sleep(1)
+    play_audio(r'/home/benjaminkroeger/Documents/Hackathons/StartHack24/ByteMe_StartHack/src/satisfaction_inquiry.wav')
     satisfaction_respone = record_and_transcribe(recorder=recorder)
 
     see_human = call_endpoints.check_satisfaction(satisfaction_respone)

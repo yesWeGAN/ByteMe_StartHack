@@ -58,8 +58,10 @@ class Recorder:
 
         while current <= end:
             data = self.stream.read(chunk)
-            if self.rms(data) >= Threshold:
-                noise_detected = True
+            volume = self.rms(data)
+            if volume >= Threshold:
+                if volume >= 60:
+                    noise_detected = True
                 end = time.time() + TIMEOUT_LENGTH
             elif not noise_detected:
                 # keep increasing the timer so users have more than 2 sec to start talking

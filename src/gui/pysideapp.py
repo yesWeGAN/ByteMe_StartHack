@@ -10,7 +10,7 @@ import call_pipeline
 class IconButton(QPushButton):
     def __init__(self, parent=None):
         QPushButton.__init__(self, parent)
-        self.pix = QPixmap('icons/pngwing.com.png')
+        self.pix = QPixmap('gui/icons/pngwing.com.png')
 
     def paintEvent(self, event):
         painter = QPainter(self)
