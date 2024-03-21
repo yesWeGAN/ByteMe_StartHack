@@ -72,15 +72,18 @@ def get_address(soup):
         for br in address_tag.findAll('br'):
             br.replace_with(", ")
         return postprocess_strings(address_tag.get_text())
+    
+try:
+    address = get_address(soup)
+except AttributeError:
+    address = "Nicht vorhanden"
 
-address = get_address(soup)
-
-print(f"Title: {title}")
+print(f"Titel: {title}")
 print(f"Beschreibung: {description}")
 
 print(f"Name: {name}")
 print(f"Position: {education}")
 print(f"Amt: {departement}")
-print(f'Address: {address}')
+print(f'Addresse: {address}')
 print(f"Telefonnummer: {phone}")
 print(f"Email: {email}")
