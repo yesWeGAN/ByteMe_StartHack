@@ -159,6 +159,7 @@ class KNNSimpleInference:
 
         Returns:
             _type_: Thruple of lists: List of Answers (str), List Of Questions (str), List of distances (float)
+            :param printprop:
         """
         queries = [query]
         query_embeddings = self.embedder.encode(queries)
@@ -193,4 +194,6 @@ if __name__ == "__main__":
                                    outputpath="src/index_files",
                                    index_of_what='q'
                                    )
-    answers, questions, dists = simpleInf.inference(query="Ich werde beschuldigt, kann ich einen Anwalt einschalten?", k=5)
+    answers, questions, dists = simpleInf.inference(query="Ich werde beschuldigt, kann ich einen Anwalt einschalten?", k=5,printprop=False)
+
+    print(answers,questions,dists)

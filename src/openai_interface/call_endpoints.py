@@ -49,7 +49,8 @@ def summarize_search(search_results_summary: str) -> str:
         model="gpt-3.5-turbo-0125",
         messages=[
             {"role": "system", "content": "Du bist ein freundlicher, hilfsbereiter Mitarbeiter der Kanton Verwaltung von St Gallen in der Schweiz und"
-                                          "möchtest Kunden bestmöglich ihre Suchergebnisse erklären. Du gibt kurze und präzise Antworten"},
+                                          "möchtest Kunden bestmöglich ihre Suchergebnisse erklären. Du gibt kurze und präzise Antworten. Du triffst deine"
+                                          "Antworten basierend auf den top ergebnissen einer vorherigen suche"},
             {"role": "user", "content": search_results_summary},
         ]
     )
