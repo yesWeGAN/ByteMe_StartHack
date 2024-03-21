@@ -6,6 +6,7 @@ from PySide6.QtWidgets import QApplication, QMainWindow, QPushButton, QVBoxLayou
 
 import call_pipeline
 
+
 class IconButton(QPushButton):
     def __init__(self, parent=None):
         QPushButton.__init__(self, parent)
@@ -17,6 +18,7 @@ class IconButton(QPushButton):
 
     def sizeHint(self):
         return QSize(500, 500)
+
 
 app = QApplication(sys.argv)
 
