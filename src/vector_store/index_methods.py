@@ -22,8 +22,8 @@ class KNNIndexTrainer:
         self.writepath = os.path.join(self.inputpath.parent, "index")
         self.vectors = self.load_stacked_tensors(regex=index_of_what)
         self.clear_input_questions = self.load_json(regex="questions")
-        self.clear_input_answers = self.load_json(regex="answers")
-        self.index = faiss.index_factory(self.vectors.shape[1], "IVF10,Flat")
+        self.clear_paths = self.load_json(regex="paths")
+        self.index = faiss.index_factory(self.vectors.shape[1], "IVF50,Flat")
         self.batchsize = batchsize
 
     def load_stacked_tensors(self, regex: str):
