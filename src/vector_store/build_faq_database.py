@@ -70,6 +70,7 @@ for path in html_faq_files:
     with open(faq, 'r', encoding='iso-8859-15') as htmlFile:
         pure_string = htmlFile.read()
         # print(pure_string)
+        parser.set_filepath = faq.as_posix()
         parser.feed(pure_string)
 
 parser.q_and_a
@@ -95,3 +96,9 @@ for q, a in parser.q_and_a.items():
 with open("q_and_a.json", 'w', encoding='utf-8') as jsonout:
     json.dump(filtered_q_and_a, jsonout)
 len(filtered_q_and_a)
+
+import json
+fuqs = json.load(open("src/vector_store/1.json", 'r'))
+fuqs
+from pprint import pprint
+pprint(fuqs)
