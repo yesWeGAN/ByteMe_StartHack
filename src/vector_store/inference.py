@@ -63,7 +63,7 @@ class KNNIndexInference:
         They contain the clear text snippets, and whatever else is listed (contact person)
 
         Args:
-            regex (str): identify which file you're looking for. 
+            regex (str): identify which file you're looking for.
 
         Returns:
             _type_: JSON-filecontent (list)
