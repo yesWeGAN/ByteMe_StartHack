@@ -10,7 +10,7 @@ import logging.config
 logging.config.dictConfig(get_logging_config())
 logger = logging.getLogger(__name__)
 
-Threshold = 20
+Threshold = 40
 
 SHORT_NORMALIZE = (1.0 / 32768.0)
 chunk = 1024
@@ -20,6 +20,7 @@ RATE = 16000
 swidth = 2
 
 TIMEOUT_LENGTH = 2
+
 
 class Recorder:
 
@@ -38,7 +39,7 @@ class Recorder:
         logger.debug(f'{rms * 1000} / t: {Threshold}')
         return rms * 1000
 
-    def __init__(self,output_dir:str):
+    def __init__(self, output_dir: str):
         self.p = pyaudio.PyAudio()
         self.stream = self.p.open(format=FORMAT,
                                   channels=CHANNELS,
@@ -48,25 +49,31 @@ class Recorder:
                                   frames_per_buffer=chunk)
         self.output_dir = output_dir
 
-    def record(self):
+    def record(self)->str:
         logger.debug('Noise detected, recording beginning')
         rec = []
         current = time.time()
         end = time.time() + TIMEOUT_LENGTH
+        noise_detected = False
 
         while current <= end:
-
             data = self.stream.read(chunk)
-            if self.rms(data) >= Threshold: end = time.time() + TIMEOUT_LENGTH
+            if self.rms(data) >= Threshold:
+                noise_detected = True
+                end = time.time() + TIMEOUT_LENGTH
+            elif not noise_detected:
+                # keep increasing the timer so users have more than 2 sec to start talking
+                end = time.time() + TIMEOUT_LENGTH
 
             current = time.time()
             rec.append(data)
-        self.write(b''.join(rec))
+
+        return self.write(b''.join(rec))
 
     def write(self, recording: bytes) -> str:
-        n_files = len(os.listdir( self.output_dir ))
+        n_files = len(os.listdir(self.output_dir))
 
-        filename = os.path.join( self.output_dir , '{}.wav'.format(n_files))
+        filename = os.path.join(self.output_dir, '{}.wav'.format(n_files))
 
         wf = wave.open(filename, 'wb')
         wf.setnchannels(CHANNELS)
