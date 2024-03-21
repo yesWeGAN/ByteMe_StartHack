@@ -64,8 +64,8 @@ def filter_string(input_string, valid_chars_list):
 valid_chars_list = list(ring.ascii_letters) + list(ring.digits) + ['_', '-']
 # Function to clean title to be used as a filename
 def clean_title(title_text):
-    title_text = filter_string(convert_umlauts(title_text), valid_chars_list)
-    return re.sub(r'[^\w_. -]', '', title_text)
+    interm = re.sub(r'[^\x00-\x7F]+', '_', title_text)
+    return interm.replace(" ", "_").replace("/", "_").replace("-", "_").replace(":", "_")
 
 # Directory to save JSON files
 json_dir = 'html_info'
@@ -142,16 +142,10 @@ def parse_html(file_path):
         'Email': email
     }
     
-        # Funktion zur Bereinigung des Titels zur Verwendung als Dateiname
-    def clean_title(title_text):
-        title_text = convert_umlauts(title_text)
-        title_text = title_text.replace(' ', '_')  # Ersetzt Leerzeichen durch Unterstriche
-        return re.sub(r'[\\/*?:"<>|]', '', title_text)  # Entfernt Zeichen, die in Dateinamen nicht zulässig sind
+    elements = file_path.split("/Users/FrankTheTank/Downloads/")[-1].split(".html")[0].split("/")
+    title="_".join(elements)
+    json_file = os.path.join(json_dir, title + '.json')
 
-    # Dann bleibt die Erstellung der JSON-Datei unverändert:
-    json_file = os.path.join(json_dir, clean_title(title) + '.json')
-    
-    # json_file = os.path.join(json_dir, clean_title(title) + '.json')
 
     try:
         # Write data dictionary to JSON file
@@ -162,7 +156,7 @@ def parse_html(file_path):
         return  # Skip this file and continue with the next one
 
 # Define start directory
-start_dir = 'C:/Users/anmyb/Desktop/HACK/data'
+start_dir = '/Users/FrankTheTank/Downloads/data'
 
 # Walk through directory tree, open HTML files
 for dir_path, dirs, files in os.walk(start_dir):
