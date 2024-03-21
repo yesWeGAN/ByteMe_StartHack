@@ -142,7 +142,7 @@ def parse_html(file_path):
         'Email': email
     }
     
-    elements = file_path.split("/Users/FrankTheTank/Downloads/")[-1].split(".html")[0].split("/")
+    elements = file_path.split("/Users/anmyb/Desktop/HACK/data")[-1].split(".html")[0].split("/")
     title="_".join(elements)
     json_file = os.path.join(json_dir, title + '.json')
 
@@ -156,7 +156,7 @@ def parse_html(file_path):
         return  # Skip this file and continue with the next one
 
 # Define start directory
-start_dir = '/Users/FrankTheTank/Downloads/data'
+start_dir = '/Users/anmyb/Desktop/HACK/data'
 
 # Walk through directory tree, open HTML files
 for dir_path, dirs, files in os.walk(start_dir):
