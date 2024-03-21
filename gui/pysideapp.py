@@ -1,10 +1,11 @@
 import sys
-from PySide6.QtCore import Qt, QSize
+
+from PySide6.QtCore import QSize
 from PySide6.QtGui import QPainter, QPixmap
 from PySide6.QtWidgets import QApplication, QMainWindow, QPushButton, QVBoxLayout, QWidget
-from speech_utils.record_voice import Recorder
 
-rec = Recorder()
+import call_pipeline
+
 class IconButton(QPushButton):
     def __init__(self, parent=None):
         QPushButton.__init__(self, parent)
@@ -24,7 +25,7 @@ window.setWindowTitle("My App")
 window.setFixedSize(500, 500)  # Set the dimensions of the window.
 
 button = IconButton()
-button.clicked.connect(rec.record)
+button.clicked.connect(call_pipeline.respond_to_caller)
 
 windowLayout = QVBoxLayout()
 windowLayout.addWidget(button)
