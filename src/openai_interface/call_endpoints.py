@@ -31,7 +31,7 @@ def convert_answer_to_audio(answer: str, speech_output_dir) -> str:
     speech_file_path = os.path.join(speech_output_dir, "speech.mp3")
     response = client.audio.speech.create(
         model="tts-1",
-        voice="alloy",
+        voice="shimmer",
         input=answer
     )
 
