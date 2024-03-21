@@ -3,6 +3,7 @@ import json
 import re
 from bs4 import BeautifulSoup
 import html
+import string as ring
 
 def postprocess_strings(string):
     string = string.replace("\t", "").replace("\n", "")
@@ -22,6 +23,22 @@ def postprocess_strings(string):
     string = string.replace("Ã–", "Ö")
     string = string.replace("ÃŸ", "ß")
     string = string.replace("Ã", "Ü")
+    string = string.replace("Â", "")
+    string = string.replace("«", "")
+    string = string.replace("»", "")
+    string = string.replace("!", "")
+    string = string.replace("â", "")
+    string = string.replace("&", "")
+    string = string.replace("%", "")
+    string = string.replace(",", "")
+    string = string.replace(":", "")
+    string = string.replace(";", "")
+    string = string.replace("(", "")
+    string = string.replace(")", "")
+    string = string.replace("?", "")
+    string = string.replace(".", "")
+
+    
     
     # If the text includes encoded characters, use the 'html.unescape()' function
     string = html.unescape(string)
@@ -37,10 +54,18 @@ def convert_umlauts(title):
             
     return title
 
+def filter_string(input_string, valid_chars_list):
+    output_string = ''
+    for char in input_string:
+        if char in valid_chars_list: 
+            output_string += char
+    return output_string
+
+valid_chars_list = list(ring.ascii_letters) + list(ring.digits) + ['_', '-']
 # Function to clean title to be used as a filename
 def clean_title(title_text):
-    title_text = convert_umlauts(title_text)
-    return re.sub(r'[\\/*?:"<>|]', '', title_text)
+    title_text = filter_string(convert_umlauts(title_text), valid_chars_list)
+    return re.sub(r'[^\w_. -]', '', title_text)
 
 # Directory to save JSON files
 json_dir = 'html_info'
@@ -55,7 +80,7 @@ def parse_html(file_path):
     # Daten extraktion
     try:
         title = postprocess_strings(soup.find('title').get_text(strip=True))
-        title = title.replace(" | sg.ch", "")
+        title = title.replace("__sgch", "")
     except AttributeError:
         title = "Nicht vorhanden"
 
@@ -128,12 +153,16 @@ def parse_html(file_path):
     
     # json_file = os.path.join(json_dir, clean_title(title) + '.json')
 
-    # Write data dictionary to JSON file
-    with open(json_file, 'w', encoding='utf-8') as f:
-        json.dump(data, f, ensure_ascii=False, indent=4)
+    try:
+        # Write data dictionary to JSON file
+        with open(json_file, 'w', encoding='utf-8') as f:
+            json.dump(data, f, ensure_ascii=False, indent=4)
+    except FileNotFoundError as e:
+        print(f"Couldn't write json file due to: {e}. Skipping this file.")
+        return  # Skip this file and continue with the next one
 
 # Define start directory
-start_dir = 'bauen'
+start_dir = 'C:/Users/anmyb/Desktop/HACK/data'
 
 # Walk through directory tree, open HTML files
 for dir_path, dirs, files in os.walk(start_dir):
@@ -141,3 +170,6 @@ for dir_path, dirs, files in os.walk(start_dir):
         if filename.endswith('.html'):
             file_path = os.path.join(dir_path, filename)
             parse_html(file_path)
+
+
+#aktuelle version
