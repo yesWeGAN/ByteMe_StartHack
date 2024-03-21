@@ -104,7 +104,7 @@ class KNNSimpleInference:
         self.vectors = self.load_stacked_tensors(regex=index_of_what)
         self.clear_input_questions = self.load_json(regex="questions")
         self.clear_input_answers = self.load_json(regex="answers")
-        self.embedder = self._setup_embedder(model_identifier="sentence-transformers/all-MiniLM-L12-v2", max_tokens=50)
+        self.embedder = self._setup_embedder(model_identifier="multilingual-e5-large-instruct", max_tokens=500)
 
     def load_stacked_tensors(self, regex: str):
         """This is here to load a stack of tensors (embedded strings from LLM)"""
@@ -171,17 +171,17 @@ class KNNSimpleInference:
                 print("\nTop 5 most similar sentences in corpus:")
             result_distances = []
             result_questions = []
-            result_answers = []
+            # result_answers = []
             for idx, distance in results[0:k]:
                 if printprop:
-                    print(f"The cosine similarity score for the following Q-A-pair is: %.4f % (1-distance))")
+                    print(f"The cosine similarity score for the following Q-A-pair is: {(1-distance)})")
                     print(self.clear_input_questions[idx].strip())
                     print(self.clear_input_answers[idx].strip())
                 result_distances.append(1-distance)
                 result_questions.append(self.clear_input_questions[idx].strip())
-                result_answers.append(self.clear_input_answers[idx].strip())
+                #result_answers.append(self.clear_input_answers[idx].strip())
             
-        return result_answers, result_questions, result_distances
+        return None, result_questions, result_distances
             
 # TODO: 
 raw_data_path = "src/raw_stacks"
