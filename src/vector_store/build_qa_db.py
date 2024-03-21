@@ -3,8 +3,11 @@ and builds a list of tagged strings that can be indexed and embedded"""
 
 import json
 from pathlib import Path
+from sentence_transformers import SentenceTransformer
+import torch
+model = SentenceTransformer('multilingual-e5-large-instruct')
 
-json_dir = "/Users/FrankTheTank/start/ByteMe_StartHack/src/json_files/kb"
+json_dir = "src/json_files/kb"
 json_files = Path(json_dir).rglob("*.json")
 index = 0
 questions = []
@@ -23,11 +26,24 @@ for json_file in json_files:
                 join_tags = "Bezüglich: "+", ".join(elements)+" "+", ".join(sub_dict["tags"])+": "
             else:
                 join_tags = "Bezüglich: "+", ".join(elements)+" "
-            tagged_question = join_tags + sub_dict["question"]
+            tagged_question = join_tags+" Frage: " + sub_dict["question"]+" Antwort: "+sub_dict["answer"]
             questions.append(tagged_question)
-            answers.append(sub_dict["question"])
+            # answers.append(sub_dict["question"])
     except:
         print(json_file.as_posix())
+print(questions)
+# embed questions
+questions_embeddings = model.encode(questions)
+# dump original questions
+with open(json_dir+"/all_questions.json",'w') as outfile:
+  json.dump(questions, outfile)
+
+# dump the embedding stack
+q_tensors = [torch.Tensor(embd).unsqueeze(0) for embd in questions_embeddings]
+q_tensor_cat = torch.cat(q_tensors)  # is of shape len(questions), embed_dim
+saving_path_q = json_dir+"/q_embed_stack.pt"
+torch.save(q_tensor_cat,saving_path_q)
+
 
     
-assert len(questions)==len(answers), "They are not equal!"
+# assert len(questions)==len(answers), "They are not equal!"
