@@ -67,20 +67,27 @@ parser = MyHTMLParser()
 html_faq_files = Path("/Users/FrankTheTank/Downloads/data").rglob("**/*faq*")
 for path in html_faq_files:
     faq = next(iter(Path(path).rglob("*.html")))
-    with open(faq, 'r', encoding='utf8') as htmlFile:
+    with open(faq, 'r', encoding='iso-8859-15') as htmlFile:
         pure_string = htmlFile.read()
         # print(pure_string)
         parser.feed(pure_string)
 
 parser.q_and_a
 filtered_q_and_a = {}
+def postprocess_strings(string):
+    string = string.replace("\t", "").replace("\n","")
+    string = string.replace("\u00c3\u0083\u00c2\u20ac", "ae")
+    string = string.replace("\u00c3\u0083\u00c2\u0152", "ue")
+    string = string.replace("\u00c3\u0083\u00c2\u00b6", "oe")
+    return string
 for q, a in parser.q_and_a.items():
     if q and "?" in q:
         print("Question: ")
         print(q)
         print("Answer:")
         print(a)
-        filtered_q_and_a[q.replace("\t", "").replace("\n","")]=a.replace("\t", "").replace("\n","")
+        filtered_q_and_a[postprocess_strings(q)]=postprocess_strings(a)
 
-with open("q_and_a.json", 'w') as jsonout:
+with open("q_and_a.json", 'w', encoding='utf-8') as jsonout:
     json.dump(filtered_q_and_a, jsonout)
+len(filtered_q_and_a)
