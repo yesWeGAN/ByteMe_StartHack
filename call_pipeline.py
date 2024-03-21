@@ -21,10 +21,13 @@ def respond_to_caller():
     filename = os.listdir(imput_dir)[-1]
     new_file_name = convert_wav_to_mp3(os.path.join(imput_dir, filename))
 
+    #TODO Exchange for openapi
     question_text = speech_to_text(new_file_name)
     print(question_text)
     # TODO all the other stuff
 
+
+    #TODO Exchange for openapi
     response_file = synthesize_speech(question_text,output_dir)
     response_file = convert_mp3_to_wav(response_file)
     play_audio(response_file)

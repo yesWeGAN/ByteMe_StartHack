@@ -21,7 +21,7 @@ class IconButton(QPushButton):
 app = QApplication(sys.argv)
 
 window = QMainWindow()
-window.setWindowTitle("My App")
+window.setWindowTitle("Mockup Callcenter")
 window.setFixedSize(500, 500)  # Set the dimensions of the window.
 
 button = IconButton()
