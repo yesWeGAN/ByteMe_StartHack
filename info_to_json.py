@@ -12,7 +12,8 @@ def postprocess_strings(string):
 
 # Make sure title text is safe to use as a filename
 def clean_title(title_text):
-    return re.sub(r'\W+', '_', title_text)
+    interm = re.sub(r'[^\x00-\x7F]+', '_', title_text)
+    return interm.replace(" ", "_").replace("/", "_").replace("-", "_").replace(":", "_")
 
 # Directory to save JSON files
 json_dir = 'html_info'
@@ -96,7 +97,7 @@ def parse_html(file_path):
         json.dump(data, f, ensure_ascii=False, indent=4)
 
 # Define start directory
-start_dir = 'bauen'
+start_dir = '/Users/FrankTheTank/Downloads/data'
 
 # Walk through directory tree, open HTML files
 for dir_path, dirs, files in os.walk(start_dir):
