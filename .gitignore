@@ -1,5 +1,7 @@
-*.json
+# *.json
 *.xlsx
-*.pt
+# *.pt
 *.txt
 *.DS_Store
+src/json_files/kb
+*.jpg

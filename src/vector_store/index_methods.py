@@ -1,4 +1,4 @@
-# https://davidefiocco.github.io/nearest-neighbor-search-with-faiss/
+
 import argparse
 import json
 import os
@@ -8,7 +8,6 @@ import faiss
 import numpy as np
 import torch
 from faiss.contrib.ondisk import merge_ondisk
-
 
 
 
@@ -95,5 +94,8 @@ trainer = KNNIndexTrainer(
     outputpath="/Users/FrankTheTank/start/ByteMe_StartHack/src/index_files",
     index_of_what='q'
 )
-len(trainer.clear_input_answers)
-trainer.build_index()
+len(trainer.clear_input_answers)    # 125
+# trainer.build_index()   # will fail for few samples (at least 350 samples for IVF10)
+
+
+

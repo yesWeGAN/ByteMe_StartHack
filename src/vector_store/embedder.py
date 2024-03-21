@@ -1,3 +1,6 @@
+"""This file takes a folder of JSON-files (parsed from html),
+and builds a list of tagged strings that can be indexed and embedded"""
+
 import json
 from pathlib import Path
 
