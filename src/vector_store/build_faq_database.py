@@ -1,6 +1,7 @@
 import json
 from pathlib import Path
 import os
+import html
 
 from html.parser import HTMLParser
 
@@ -78,11 +79,25 @@ filtered_q_and_a = {}
 
 
 def postprocess_strings(string):
-    """This one takes out tabs, newlines, and annoying umlaut escape chars"""
-    string = string.replace("\t", "").replace("\n","")
-    string = string.replace("\u00c3\u0083\u00c2\u20ac", "ae")
-    string = string.replace("\u00c3\u0083\u00c2\u0152", "ue")
-    string = string.replace("\u00c3\u0083\u00c2\u00b6", "oe")
+    string = string.replace("\t", "").replace("\n", "")
+    string = string.replace("&auml;", "ä")
+    string = string.replace("&ouml;", "ö")
+    string = string.replace("&uuml;", "ü")
+    string = string.replace("&Auml;", "Ä")
+    string = string.replace("&Ouml;", "Ö")
+    string = string.replace("&Uuml;", "Ü")
+    string = string.replace("&szlig;", "ß")
+
+    string = string.replace("Ã¼", "ü")
+    string = string.replace("Ã¤", "ä")
+    string = string.replace("Ã¶", "ö")
+    string = string.replace("Ãœ", "Ü")
+    string = string.replace("Ã„", "Ä")
+    string = string.replace("Ã–", "Ö")
+    string = string.replace("ÃŸ", "ß")
+    
+    # If the text includes encoded characters, use the 'html.unescape()' function
+    string = html.unescape(string)
     return string
 
 for q, a in parser.q_and_a.items():
