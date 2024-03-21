@@ -74,12 +74,16 @@ for path in html_faq_files:
 
 parser.q_and_a
 filtered_q_and_a = {}
+
+
 def postprocess_strings(string):
+    """This one takes out tabs, newlines, and annoying umlaut escape chars"""
     string = string.replace("\t", "").replace("\n","")
     string = string.replace("\u00c3\u0083\u00c2\u20ac", "ae")
     string = string.replace("\u00c3\u0083\u00c2\u0152", "ue")
     string = string.replace("\u00c3\u0083\u00c2\u00b6", "oe")
     return string
+
 for q, a in parser.q_and_a.items():
     if q and "?" in q:
         print("Question: ")
