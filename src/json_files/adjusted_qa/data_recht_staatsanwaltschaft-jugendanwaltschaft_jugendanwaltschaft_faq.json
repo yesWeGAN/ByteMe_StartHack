@@ -1,0 +1,42 @@
+[
+  {
+    "keywords": ["Jugendliche", "Straftäter", "härter durchgreifen"],
+    "question": "Sollte man nicht endlich härter gegen jugendliche Straftäter vorgehen?",
+    "answer": "Die Frage ist nicht, wie hart wir auf jugendliche Straftaten reagieren, sondern wie sinnvoll und nachhaltig wir reagieren. Ziel des Jugendstrafrechts ist es, zu verhindern, dass jugendliche Straftäter erneut straffällig werden. Es kann dann erreicht werden, wenn wir die Ursachen der strafbaren Handlungen untersuchen und es gelingt, diese zu beseitigen. Das schweizerische Jugendstrafrecht ermöglicht dies, indem es auf sinnvolle, auf den Einzelfall abgestimmte Lösungen setzt, die Nachhaltigkeit versprechen."
+  },
+  {
+    "keywords": ["Kind", "Strafanzeige", "Eltern"],
+    "question": "Gegen unser Kind wurde Strafanzeige eingereicht. Was müssen wir als Eltern tun?",
+    "answer": "Begleiten Sie Ihr Kind zu den ersten Befragungen durch die Polizei oder die Jugendanwaltschaft. Wenn keine überwiegenden Interessen entgegenstehen, haben Sie das Recht, den Befragungen beizuwohnen. Sie erfahren so aus erster Hand, was vorgefallen ist und lernen die zuständigen Personen kennen. Sie werden dabei auch über die nächsten Verfahrensschritte informiert. Sie sind verpflichtet, bei der Erhebung der persönlichen Verhältnisse mitzuwirken. Sie können sich nicht auf ein Zeugnisverweigerungsrecht berufen."
+  },
+  {
+    "keywords": ["Schule", "Lehrmeister", "Eltern", "Strafverfahren"],
+    "question": "Erfahren Schule, Lehrmeister und Eltern vom Strafverfahren?",
+    "answer": "Die gesetzlichen Vertreter und ein allfälliger Beistand werden immer über ein geringfügiges Verfahren informiert. Bei erheblicheren Delikten oder im Wiederholungsfall werden bei den Lehrkräften Auskünfte über Wahrnehmungen zur Person und zu deren Verhalten eingeholt. Die Lehrpersonen, wie auch andere an der Erziehung Beteiligte, sind zur Auskunft gegenüber der Jugendanwaltschaft verpflichtet. Wenn Sie dadurch Kenntnisse vom Strafverfahren erhalten, können sie zur Verschwiegenheit verpflichtet werden. Mit Lehrmeistern wird nach Möglichkeit kein Kontakt aufgenommen. Ist aber eine längere Begleitung des Jugendlichen notwendig, kann auch der Arbeitsbereich miteinbezogen werden."
+  },
+  {
+    "keywords": ["Verhandlung", "öffentlich", "Jugendgericht"],
+    "question": "Ist die Verhandlung öffentlich (wie bei „Das Jugendgericht tagt“)?",
+    "answer": "Das strafrechtliche Verfahren bei Jugendlichen ist in der Schweiz grundsätzlich nicht öffentlich. Eine öffentliche Verhandlung wird nur in Ausnahmefällen angeordnet. Die meisten Urteile, gut 90 Prozent, werden im Kanton St. Gallen von der Jugendanwältin oder dem Jugendanwalt in der Form eines Strafbefehls ausgefällt. Die Verhandlung findet in den Räumen der Jugendanwaltschaft, unter obligatorischer Teilnahme des angeschuldigten Jugendlichen und mindestens eines Elternteils statt."
+  },
+  {
+    "keywords": ["Busse", "Verfahrenskosten", "Schadenersatzforderungen", "Kind", "Eltern"],
+    "question": "Wer muss für eine Busse, die Verfahrenskosten oder Schadenersatzforderungen einstehen, das Kind oder die Eltern?",
+    "answer": "Für die Busse haftet ausschliesslich der verurteilte Jugendliche. Die Jugendanwaltschaft legt aus erzieherischen Überlegungen grossen Wert darauf, dass nicht die Eltern für ihre Kinder einspringen. Ratenzahlungen und Zahlungsaufschub werden deshalb auf Nachfrage gewährt. Jeder Jugendliche soll so die geschuldete Summe mit Freizeit- und Ferienarbeit und Taschengeldeinschränkungen selber leisten können. Ein Jugendlicher haftet in der Regel für den durch ihn verursachten Schaden. Die Eltern können nicht belangt werden."
+  },
+  {
+    "keywords": ["Schulden", "Staat", "abarbeiten"],
+    "question": "Wenn ich kein Geld habe, kann ich die Schulden beim Staat abarbeiten?",
+    "answer": "Nein, die Schulden können nicht beim Staat abgearbeitet werden. Die Jugendanwaltschaft bemisst aber Busse und Verfahrenskosten in der Regel so, dass es für das Kind oder den Jugendlichen möglich sein sollte, die Summe mit entsprechendem Einsatz innerhalb angemessener Frist selbst aufzukommen."
+  },
+  {
+    "keywords": ["Strafverfahren", "Führerausweis"],
+    "question": "Welchen Einfluss hat ein Strafverfahren auf den Führerausweis?",
+    "answer": "Wer Gesetze im Strassenverkehr in grober Weise übertritt, muss mit dem Entzug oder der Verweigerung des Führerausweises rechnen. Diese Entscheidung liegt aber in der Kompetenz des Strassenverkehrsamtes."
+  },
+  {
+    "keywords": ["registriert", "Strafverfahren"],
+    "question": "Werde ich im Falle eines Strafverfahrens registriert? Wo und für wie lange?",
+    "answer": "Jugendliche werden nur dann im Strafregister eingetragen, wenn sie wegen einem Vergehen oder Verbrechen verurteilt und ein Freiheitsentzug, eine Unterbringung in einer geschlossenen Einrichtung, eine offene Unterbringung in einer Einrichtung oder bei Privatpersonen oder eine ambulante Behandlung angeordnet wurde. Bei Jugendlichen werden die Einträge von Urteilen, die einen Freiheitsentzug oder eine Unterbringung in einer geschlossenen Einrichtung enthalten, nach zehn Jahren, von Urteilen, die eine offene Unterbringung enthalten, nach sieben Jahren von Urteilen die einzig eine ambulante Behandlung enthalten, nach fünf Jahren von Amtes wegen aus dem Strafregister entfernt."
+  }
+]

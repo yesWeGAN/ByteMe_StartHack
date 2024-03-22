@@ -1,0 +1,57 @@
+[
+{
+"keywords": ["Ziele", "Projekts PUPIL@SG"],
+"question": "Was sind die Ziele des Projekts PUPIL@SG?",
+"answer": "Basierend auf dem eGovernment Gesetz des Kantons St.Gallen, wurde beschlossen, das Projekt gemeinsam mit Kanton und den Schulträgern umzusetzen. Ziel ist es, die Prozesse zwischen den verschiedenen Staatsebenen zu optimieren und harmonisieren. Hinzu kommt, das zukünftige E-Services der Volksschule auf diesem Service aufbauen können."
+},
+{
+"keywords": ["Zeitplan", "Projekts PUPIL@SG"],
+"question": "Wie sieht der Zeitplan des Projekts PUPIL@SG aus?",
+"answer": "Die Ausschreibung und Unterlagen wurden Anfang 2022 veröffentlicht und der Zuschlag an die Pupil AG im Juli 2021 erteilt. Die Einführung der neuen Applikation bei den Schulträgern soll ab 2023 schrittweise erfolgen und das Projekt soll bis" 
+},
+{
+"keywords": ["Ziele", "Projekts PUPIL@SG"],
+"question": "Was sind die Ziele des Projekts PUPIL@SG?",
+"answer": "Basierend auf dem eGovernment Gesetz des Kantons St.Gallen, wurde beschlossen, das Projekt gemeinsam mit Kanton und den Schulträgern umzusetzen. Ziel ist es, die Prozesse zwischen den verschiedenen Staatsebenen zu optimieren und harmonisieren. Hinzu kommt, das zukünftige E-Services der Volksschule auf diesem Service aufbauen können."
+},
+{
+"keywords": ["Zeitplan", "Projekts PUPIL@SG"],
+"question": "Wie sieht der Zeitplan des Projekts PUPIL@SG aus?",
+"answer": "Die Ausschreibung und Unterlagen wurden Anfang 2022 veröffentlicht und der Zuschlag an die Pupil AG im Juli 2021 erteilt. Die Detailkonzepte werden ab Oktober 2021 erarbeitet und ein Prototyp entwickelt. Ab Oktober 2022 sollen Pilotschulen die Lösung in der Praxis testen. Die schrittweise Einführung der neuen Applikation bei Kanton und den Schulträgern ist ab 2023 geplant und das Projekt soll im Dezember 2025 abgeschlossen sein."
+},
+{
+"keywords": ["Abschluss", "Projekts PUPIL@SG"],
+"question": "Wann ist der offizielle Betriebsstart von PUPIL@SG geplant?",
+"answer": "Der offizielle Betriebsstart von PUPIL@SG ist für den 1. Juli 2023 geplant."
+},
+{
+"keywords": ["Datenschutz", "Projekts PUPIL@SG"],
+"question": "Wie sind Datenschutzbeauftragte im Projekt PUPIL@SG involviert?",
+"answer": "Sowohl die kantonale Datenschutzbeauftragte als auch die städtische Datenschutzbeauftragte von St.Gallen sind im Projekt involviert. Es werden dabei verschiedene Sicherheitsaudits mit externen Firmen durchgeführt."
+},
+{
+"keywords": ["Integration", "System PUPIL@SG"],
+"question": "Können bereits bestehende individuelle Lösungen und Programme auch in PUPIL weitergeführt werden?",
+"answer": "Ja, Umsysteme können angebunden werden. Diese Anbindung muss jeweils standardisiert über die Datendrehscheibe Connect SG stattfinden. Verschiedene Anbindungen sind im Standard vorgesehen, bspw. an Finanz- und HR-Systeme, Microsoft 365, Untis und DaVinci."
+},
+{
+"keywords": ["Kosten", "Projekts PUPIL@SG"],
+"question": "Wer trägt die Kosten des Projekts PUPIL@SG?",
+"answer": "Die Projektkosten werden gemäß E-Government-Gesetz hälftig durch den Kanton und die politischen Gemeinden übernommen. Der Beitrag, der von den politischen Gemeinden übernommen wird, setzt sich aus einem Sockelbeitrag und der Anzahl Einwohnerinnen und Einwohner zusammen."
+},
+{
+"keywords": ["Module", "Projekts PUPIL@SG"],
+"question": "Besteht die Möglichkeit, das Projekt im Einzelfall zu beschleunigen oder einzelne Module vorzuziehen?",
+"answer": "Im Projekt wird grundsätzlich der definierte Fahrplan eingehalten. Die Schulträger konnten sich auf verschiedene «Einführungsfenster/-slots» bewerben. Das Projektteam hat versucht, die Wünsche soweit als möglich zu berücksichtigen, musste aber bei der Planung verschiedene Parameter beachten. Verschiedene Module der PUPIL AG können vor, während oder nach der Einführung des Kernsystems bezogen werden."
+},
+{
+"keywords": ["Sicherheit", "System PUPIL@SG"],
+"question": "Wie wird die Sicherheit beim Zugriff auf die webbasierte Lösung PUPIL@SG gewährleistet?",
+"answer": "PUPIL unterstützt grundsätzlich mehrere Varianten der Zweifaktoren-Authentifizierung. Je nach Implementierungsvariante (z.B. Anbindung an M365 oder Authentifizierung direkt bei PUPIL) beim Schulträger wird die Zweifaktoren-Authentifizierung etwas anders ausgeprägt sein."
+},
+{
+"keywords": ["Zugang", "System PUPIL@SG"],
+"question": "Erhalten externe Lehrpersonen einen Zugang zu PUPIL@SG?",
+"answer": "Es ist vorgesehen, dass sämtliches pädagogisches Personal, das auf der Plattform Informationen erfassen muss, Zugriff erhält. Der Zugriff und die Berechtigungen auf die Daten unterscheiden sich dabei von Rolle zu Rolle."
+}
+]

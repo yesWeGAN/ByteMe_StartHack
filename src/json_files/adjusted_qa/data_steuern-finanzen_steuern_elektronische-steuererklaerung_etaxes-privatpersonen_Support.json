@@ -1,0 +1,37 @@
+[
+{
+"keywords": ["Ausserordentliche Wartung", "eTaxes"],
+"question": "Wann findet die ausserordentliche Wartung von eTaxes statt?",
+"answer": "Die ausserordentliche Wartung von eTaxes ist für Freitag, 22. März 2024 geplant. Sie kann zwischen 19:00 und 24:00 Uhr zu Unterbrechungen führen. Es wird empfohlen, die Einreichung der elektronischen Steuererklärung ausserhalb dieses Zeitfensters vorzunehmen."
+},
+{
+"keywords": ["eTaxes", "downloaden"],
+"question": "Wo kann ich eTaxes downloaden?",
+"answer": "Die eTaxes-Software kann im Download-Bereich für die Betriebssysteme Windows, MacOS und Linux heruntergeladen werden. Folgen Sie dazu dem nachfolgenden Link: zum Download-Bereich."
+},
+{
+"keywords": ["eTaxes", "Schreibrechte"],
+"question": "Was soll ich tun, wenn das System mir beim Installieren von eTaxes anzeigt, dass mir Schreibrechte im Programme-Ordner fehlen?",
+"answer": "Wenn Ihr Betriebssystem Ihnen bei der Installation einer Anwendung anzeigt, dass Sie keine Schreibrechte im Programme-Ordner haben, bedeutet dies, dass Sie sich mit einem eingeschränkten Benutzerkonto angemeldet haben. Für die Installation von Software benötigen Sie ein Benutzerkonto mit Administratorrechten. Melden Sie sich mit einem Administrator-Konto an oder führen Sie die Anwendung mit Administratoren-Rechten aus."
+},
+{
+"keywords": ["Installations-Datei", "Linux", "ausführbar"],
+"question": "Wie mache ich die Installations-Datei für eTaxes unter Linux-Systemen ausführbar?",
+"answer": "Unter Linux-Distributionen kann es notwendig sein, eine Datei nach dem Download ausführbar zu machen. Dazu kann die Datei direkt mit dem Befehl 'sh ./SGnP2022_installieren_unix_64bit.sh' ausgeführt werden."
+},
+{
+"keywords": ["Art der Wertschrift", "eFiling", "Beleg-Upload"],
+"question": "Welche 'Art der Wertschrift' verlangt einen Beleg-Upload (Pflichtbeilage)?",
+"answer": "Wenn Sie eine der folgenden Wertschriftenarten in der Steuererklärung erfasst haben, muss dazu ein Beleg (Pflichtbeilage) hochgeladen werden: Steuerbewerteter Depotauszug (sofern nicht eSteuerauszug, welcher automatisch nach Import eingebunden wird), Lotteriegewinne, Kassenobligation, Termingeldkonti, übrige Guthaben (nur bis eTaxes Version 2021 - 1.4.0)."
+},
+{
+"keywords": ["eFiling", "Fehler", "Korrektur"],
+"question": "Kann ich einen Fehler nach der digitalen Einreichung via eFiling korrigieren?",
+"answer": "Ja, bei einer digitalen Übermittlung befindet sich die Steuererklärung in einer Wartefrist. Während drei Tagen (72 Stunden) haben Sie die Möglichkeit, einen festgestellten Fehler zu korrigieren und die Steuererklärung einfach neu einzureichen."
+},
+{
+"keywords": ["oBeam", "eTaxes"],
+"question": "Wie kann ich oBeam mit eTaxes nutzen?",
+"answer": "oBeam ist eine App für das mobile Gerät zum Digitalisieren von Dokumenten und Übertragen dieser Dokumente an eTaxes. Die App funktioniert nur im Zusammenhang mit den entsprechenden Anwendungen und kann in eTaxes ab der Steuerperiode 2021 genutzt werden."
+}
+]
