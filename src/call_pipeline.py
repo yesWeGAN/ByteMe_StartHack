@@ -24,7 +24,7 @@ indexInf = KNNIndexInference(dataset="/home/benjaminkroeger/Documents/Hackathons
 
 def respond_to_caller():
     # greet the user with a prerecorded message
-    # play_audio(r'/home/benjaminkroeger/Documents/Hackathons/StartHack24/ByteMe_StartHack/src/St_gallen_welcome.wav')
+    play_audio(r'/home/benjaminkroeger/Documents/Hackathons/StartHack24/ByteMe_StartHack/src/welcome.wav')
     caller_response = record_and_transcribe(recorder=recorder)
 
     # sort search results
