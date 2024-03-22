@@ -8,7 +8,7 @@ from speech_utils.speech_to_text import record_and_transcribe
 from utils.audio_conversion import convert_mp3_to_wav, play_audio
 from utils.logger import get_logging_config
 from utils.hit_filtering import filter_hits_threshold,create_summary_str
-from vector_store.inference import KNNSimpleInference
+from vector_store.inference import KNNSimpleInference, KNNIndexInference
 
 logging.config.dictConfig(get_logging_config())
 logger = logging.getLogger(__name__)
@@ -18,21 +18,18 @@ input_dir = r'/home/benjaminkroeger/Documents/Hackathons/StartHack24/ByteMe_Star
 output_dir = r'/home/benjaminkroeger/Documents/Hackathons/StartHack24/ByteMe_StartHack/audio_out'
 recorder = Recorder(input_dir)
 
-raw_data_path = "/home/benjaminkroeger/Documents/Hackathons/StartHack24/ByteMe_StartHack/src/qa_search_stack"
-simpleInf = KNNSimpleInference(inputpath=raw_data_path,
-                               outputpath="src/index_files",
-                               index_of_what='q'
-                               )
-
+raw_data_path = "/home/benjaminkroeger/Documents/Hackathons/StartHack24/ByteMe_StartHack/src/cpl"
+indexInf = KNNIndexInference(dataset="/home/benjaminkroeger/Documents/Hackathons/StartHack24/ByteMe_StartHack/src/cpl",
+                             outputpath="src/index_files")
 
 def respond_to_caller():
     # greet the user with a prerecorded message
-    # play_audio(r'/home/benjaminkroeger/Documents/Hackathons/StartHack24/ByteMe_StartHack/src/St_gallen_welcome.wav')
+    play_audio(r'/home/benjaminkroeger/Documents/Hackathons/StartHack24/ByteMe_StartHack/src/St_gallen_welcome.wav')
     caller_response = record_and_transcribe(recorder=recorder)
 
     # sort search results
-    answers, questions, dists = simpleInf.inference(query=caller_response, k=5, printprop=False)
-    answers,questions = filter_hits_threshold(answers=answers,questions=questions,scores=dists,threshold=0.5)
+    answers, questions, dists = indexInf.run_inference(query=caller_response, k=5, printprop=False)
+    answers,questions = filter_hits_threshold(answers=answers,questions=questions)
     summary_str = create_summary_str(answers=answers,questions=questions,original_question=caller_response)
     logger.debug(summary_str)
     ai_summary = call_endpoints.summarize_search(summary_str)

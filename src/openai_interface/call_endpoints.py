@@ -48,9 +48,10 @@ def summarize_search(search_results_summary: str) -> str:
     response = client.chat.completions.create(
         model="gpt-4-turbo-preview",
         messages=[
-            {"role": "system", "content": "Du bist ein freundlicher, hilfsbereiter Mitarbeiter der Kanton Verwaltung von St Gallen in der Schweiz und"
-                                          "möchtest Kunden bestmöglich ihre Suchergebnisse erklären. Du gibt kurze und präzise Antworten. Du triffst deine"
-                                          "Antworten basierend auf den top ergebnissen einer vorherigen suche"},
+            {"role": "system",
+             "content": 'Im Folgenden gibt es ein Query eines Users, und dazu einige Textausschnitte, die dazu passen könnten. Falls die Textausschnitte'
+                        ' die Frage des Users beantworten können, fasse in maximal zwei Sätzen nur die Inhalte aus den Textausschnitten zusammen, die zu'
+                        ' dem Query des Users passen. Falls die Textausschnitte nicht übereinstimmen, gebe "kein Match" zurück.'},
             {"role": "user", "content": search_results_summary},
         ]
     )
