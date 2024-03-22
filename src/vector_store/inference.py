@@ -29,9 +29,10 @@ class KNNIndexInference:
         self.embedder = self._setup_embedder(model_identifier=embedding_model, max_tokens=max_tokens)
         # self.batchsize = batchsize
         self.dataset = dataset
+        self.inputpath = dataset
         self.index = self.find_indexfile()
-        self.clear_input_questions = self.load_json(regex="questions")
-        self.clear_paths = self.load_json(regex="paths")
+        self.clear_input_questions = self.load_json(regex="all_questions")
+        self.clear_paths = self.load_json(regex="all_paths")
         self.embedder = self._setup_embedder(model_identifier="intfloat/multilingual-e5-large-instruct", max_tokens=500)
     
     def load_json(self, regex: str):
@@ -45,7 +46,7 @@ class KNNIndexInference:
             _type_: JSON file content.
         """
         try:
-            json_file = next(iter(Path(self.inputpath).rglob(f"*{regex}*.json")))
+            json_file = next(iter(Path(self.inputpath).rglob(f"*{regex}.json")))
             return json.load(open(json_file, "r"))
         except:
             print(f"No json file found for: {regex}*.json")
@@ -97,27 +98,25 @@ class KNNIndexInference:
 
     def search_full_index(self, vectors, k):
         self.index.nprobe = 80
-        distances, neighbors = self.index.search(vectors, k)
+        distances, neighbors = self.index.search(np.expand_dims(vectors,0), k)
         return distances, neighbors
     
     def run_inference(self, query: str, max_tokens: int = 500, k=5, printprop=True):
         """under construction still"""
         query_tensor = self.embed_query(query=query, max_tokens=max_tokens)
         dist, neighbors = self.search_full_index(query_tensor, k)
-        print(dist)
-        print(neighbors)
         result_distances = []
         result_questions = []
         result_paths = []
         # result_answers = []
-        for idx in neighbors:
+        for idx, neighbor in enumerate(neighbors[0]):
             if printprop:
-                print(f"The cosine similarity score for the following Q-A-pair is: {(1-dist[idx])})")
-                print(self.clear_input_questions[idx].strip())
-                print(self.clear_paths[idx].strip())
-            result_distances.append(1-dist[idx])
-            result_questions.append(self.clear_input_questions[idx].strip())
-            result_paths.append(self.clear_paths[idx].strip())
+                print(f"The cosine similarity score for the following Q-A-pair is: {(1-dist[0][idx])})")
+                print(self.clear_input_questions[neighbor].strip())
+                print(self.clear_paths[neighbor].strip())
+            result_distances.append(1-dist[0][idx])
+            result_questions.append(self.clear_input_questions[neighbor].strip())
+            result_paths.append(self.clear_paths[neighbor].strip())
             
         return result_paths, result_questions, result_distances
             
@@ -223,12 +222,13 @@ class KNNSimpleInference:
 
 if __name__ == "__main__":
     raw_data_path = "/home/benjaminkroeger/Documents/Hackathons/StartHack24/ByteMe_StartHack/src/cpl"
-    simpleInf = KNNSimpleInference(inputpath=raw_data_path,
-        outputpath="src/index_files",
-        index_of_what='q'
-    )
-    simpleInf.inference(query="Ich will einen Jagdschein machen was muss ich tun", k=5)
+    #simpleInf = KNNSimpleInference(inputpath=raw_data_path,
+    #    outputpath="src/index_files",
+    #    index_of_what='q'
+    #)
+    #simpleInf.inference(query="Ich will einen Jagdschein machen was muss ich tun", k=5)
 
     indexInf= KNNIndexInference(dataset="/home/benjaminkroeger/Documents/Hackathons/StartHack24/ByteMe_StartHack/src/cpl",
                                 outputpath="src/index_files")
+
     indexInf.run_inference(query="Ich will einen Jagdschein machen was muss ich tun", k=5)
