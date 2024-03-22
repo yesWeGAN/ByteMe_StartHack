@@ -7,7 +7,7 @@ from speech_utils.record_voice import Recorder
 from speech_utils.speech_to_text import record_and_transcribe
 from utils.audio_conversion import convert_mp3_to_wav, play_audio
 from utils.logger import get_logging_config
-from utils.hit_filtering import filter_hits_threshold,create_summary_str
+from utils.hit_filtering import filter_hits_threshold,create_summary_str,restructure_contact_urls
 from vector_store.inference import KNNSimpleInference, KNNIndexInference
 
 logging.config.dictConfig(get_logging_config())
@@ -33,7 +33,13 @@ def respond_to_caller():
     summary_str = create_summary_str(answers=answers,questions=questions,original_question=caller_response)
     logger.debug(summary_str)
     ai_summary = call_endpoints.summarize_search(summary_str)
-    logger.debug(ai_summary)
+    logger.debug(f'ChatGPT summmary: {ai_summary}')
+
+    pattern = re.compile("kein", re.IGNORECASE)
+    if re.search(pattern,ai_summary):
+        filtered_identifiers = restructure_contact_urls(faiss_seperator='_',contact_dict_seperator='/',filenames=questions)
+
+        return
 
     # Convert the chatbots answer back to voice
     response_file = call_endpoints.convert_answer_to_audio(ai_summary, output_dir)
@@ -52,7 +58,6 @@ def respond_to_caller():
     pattern_yes = re.compile('.*ja.*', re.IGNORECASE)
     if re.search(pattern_yes, see_human):
         logger.debug('Forwarding client')
-        pass
     else:
         play_audio(r'/home/benjaminkroeger/Documents/Hackathons/StartHack24/ByteMe_StartHack/src/Hangup_phrase.wav')
         logger.debug('Terminating Call')

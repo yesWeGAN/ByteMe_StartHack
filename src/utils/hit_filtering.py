@@ -13,5 +13,15 @@ def create_summary_str(questions: list[str], answers: list[str], original_questi
     return summary_str
 
 
+def restructure_contact_urls(faiss_seperator: str, contact_dict_seperator, filenames: list[str]) -> list[str]:
+    renamed_names = []
+
+    for filename in filenames:
+        new_name = filename.replace(faiss_seperator, contact_dict_seperator).rstrip('.json')
+        renamed_names.append(new_name)
+
+    return renamed_names
+
+
 def find_contact(contact_url: str, contact_dict: dict):
     pass
