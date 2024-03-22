@@ -221,14 +221,14 @@ class KNNSimpleInference:
 # TODO:
 
 if __name__ == "__main__":
-    raw_data_path = "/home/benjaminkroeger/Documents/Hackathons/StartHack24/ByteMe_StartHack/src/cpl"
+    raw_data_path = "/home/benjaminkroeger/Documents/Hackathons/StartHack24/ByteMe_StartHack/src/index"
     #simpleInf = KNNSimpleInference(inputpath=raw_data_path,
     #    outputpath="src/index_files",
     #    index_of_what='q'
     #)
     #simpleInf.inference(query="Ich will einen Jagdschein machen was muss ich tun", k=5)
 
-    indexInf= KNNIndexInference(dataset="/home/benjaminkroeger/Documents/Hackathons/StartHack24/ByteMe_StartHack/src/cpl",
+    indexInf= KNNIndexInference(dataset="/home/benjaminkroeger/Documents/Hackathons/StartHack24/ByteMe_StartHack/src/index",
                                 outputpath="src/index_files")
 
     indexInf.run_inference(query="Ich will einen Jagdschein machen was muss ich tun", k=5)

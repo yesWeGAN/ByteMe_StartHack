@@ -86,7 +86,7 @@ class KNNIndexTrainer:
             os.remove(block)
 
 
-raw_data_path = r"/home/benjaminkroeger/Documents/Hackathons/StartHack24/ByteMe_StartHack/src/cpl"
+raw_data_path = r"/home/benjaminkroeger/Documents/Hackathons/StartHack24/ByteMe_StartHack/src/index"
 
 trainer = KNNIndexTrainer(
     inputpath=raw_data_path,

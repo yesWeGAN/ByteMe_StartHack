@@ -9,9 +9,9 @@ import os
 
 model = SentenceTransformer('intfloat/multilingual-e5-large-instruct')
 
-json_dir = "html_info"
-qa_dir = "/Users/FrankTheTank/start/ByteMe_StartHack/src/json_files/adjusted_qa"
-output_directory = "/Users/FrankTheTank/start/ByteMe_StartHack/src/dummy"
+json_dir = r"/home/benjaminkroeger/Downloads/html_info"
+qa_dir = r"/home/benjaminkroeger/Documents/Hackathons/StartHack24/ByteMe_StartHack/src/json_files/adjusted_qa"
+output_directory = r"/home/benjaminkroeger/Documents/Hackathons/StartHack24/ByteMe_StartHack/src/index"
 
 os.makedirs(output_directory, exist_ok=True)
 json_files = Path(json_dir).rglob("*.json")
@@ -77,5 +77,5 @@ with open(os.path.join(output_directory, "all_paths.json"), 'w', encoding='utf-8
 # dump the embedding stack
 q_tensors = [torch.Tensor(embd).unsqueeze(0) for embd in questions_embeddings]
 q_tensor_cat = torch.cat(q_tensors)  # is of shape len(questions), embed_dim
-saving_path_q = output_directory + "q_embed_stack.pt"
+saving_path_q = os.path.join(output_directory , "q_embed_stack.pt")
 torch.save(q_tensor_cat, saving_path_q)
