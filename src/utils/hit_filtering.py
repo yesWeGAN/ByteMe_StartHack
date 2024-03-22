@@ -1,5 +1,5 @@
-def filter_hits_threshold(questions: list[str], answers: list[str], scores: list[float], threshold: float) -> tuple[list[str], list[str]]:
-    filtered = [(q, a) for q, a, s in zip(questions, answers, scores) if s > threshold]
+def filter_hits_threshold(questions: list[str], answers: list[str]) -> tuple[list[str], list[str]]:
+    filtered = [(q, a) for q, a, s in zip(questions, answers)]
     return zip(*filtered)
 
 
