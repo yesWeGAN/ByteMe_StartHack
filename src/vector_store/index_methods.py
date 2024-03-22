@@ -22,15 +22,15 @@ class KNNIndexTrainer:
         self.writepath = os.path.join(self.inputpath.parent, "index")
         self.vectors = self.load_stacked_tensors(regex=index_of_what)
         self.clear_input_questions = self.load_json(regex="questions")
-        self.clear_input_answers = self.load_json(regex="answers")
-        self.index = faiss.index_factory(self.vectors.shape[1], "IVF10,Flat")
+        self.clear_paths = self.load_json(regex="paths")
+        self.index = faiss.index_factory(self.vectors.shape[1], "IVF50,Flat")
         self.batchsize = batchsize
 
     def load_stacked_tensors(self, regex: str):
         """This is here to load a stack of tensors (embedded strings from LLM)"""
         try:
             tensor_stack_file = next(
-                iter(Path(self.inputpath).rglob(f"{regex}_embed_stack.pt"))
+                iter(Path(self.inputpath).rglob("*.pt"))
             )
             return torch.load(tensor_stack_file)
         except:
@@ -86,16 +86,16 @@ class KNNIndexTrainer:
             os.remove(block)
 
 
-raw_data_path = "raw_stacks"
+raw_data_path = r"/home/benjaminkroeger/Documents/Hackathons/StartHack24/ByteMe_StartHack/src/index"
 
 trainer = KNNIndexTrainer(
     inputpath=raw_data_path,
-    batchsize=100,
-    outputpath="src/index_files",
+    batchsize=2000,
+    outputpath=r"/home/benjaminkroeger/Documents/Hackathons/StartHack24/ByteMe_StartHack/src/cpl",
     index_of_what='q'
 )
-len(trainer.clear_input_answers)    # 125
-# trainer.build_index()   # will fail for few samples (at least 350 samples for IVF10)
+#len(trainer.clear_input_answers)    # 125
+trainer.build_index()   # will fail for few samples (at least 350 samples for IVF10)
 
 
 

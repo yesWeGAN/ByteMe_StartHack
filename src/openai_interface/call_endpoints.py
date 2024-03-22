@@ -69,9 +69,9 @@ def summarize_search(search_results_summary: str) -> str:
         model="gpt-4-turbo-preview",
         messages=[
             {"role": "system",
-             "content": " Du bist ein assistent und im Folgenden gibt es ein Query eines Users, und dazu einige"
-             "Textausschnitte, die dazu passen könnten. Fasse in maximal zwei Sätzen nur die Inhalte aus den"
-             "Textausschnitten zusammen, die zu dem Query des Users passen."},
+             "content": 'Im Folgenden gibt es ein Query eines Users, und dazu einige Textausschnitte, die dazu passen könnten. Falls die Textausschnitte'
+                        ' die Frage des Users beantworten können, fasse in maximal zwei Sätzen nur die Inhalte aus den Textausschnitten zusammen, die zu'
+                        ' dem Query des Users passen. Falls die Textausschnitte nicht übereinstimmen, gebe "kein Match" zurück.'},
             {"role": "user", "content": search_results_summary},
         ]
     )
