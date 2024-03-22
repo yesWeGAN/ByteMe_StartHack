@@ -1,30 +1,32 @@
 # ByteMe: GrüeziBot
+ 
+A voice chat bot for the canton St. Gallen aimed at providing rapid comprehensive responses or immediate
+redirection to the right expert.
 ## Architecture
 #### Speech2Text / Text2Speech
-We use OpenAI Whisper German-Swiss 
-https://huggingface.co/ss0ffii/whisper-small-german-swiss
-to map the user's voice into string queries.  
+We use OpenAI Whisper to map users speech inputs to text and vice versa 
 
-#### LangChain vector store for query vector search against database
-We embed the 3.5k departmental text files using SentenceBERT for rapid prototyping. 
-Perspectively, this could be replaced by way more advanced ChatGPT-embeddings (at the cost 3500 documents x mean(len(doc)) x cost_per_token) for more precise document matching and improved performance.  
-  
-We choose FAISS index over Chroma/others (https://medium.com/@stepkurniawan/comparing-faiss-with-chroma-vector-stores-0953e1e619eb) due to better and faster inference.  
-
+#### FAISS vector store for query vector search against database
+We embed the 3.5k departmental text files using ```intfloat/multilingual-e5-large-instruct``` for rapid prototyping.
+We choose FAISS index over Chroma/others (https://medium.com/@stepkurniawan/comparing-faiss-with-chroma-vector-stores-0953e1e619eb) due to better and faster inference.
 For scalability, this MVP implementation can be ported to MongoDB Atlas vector search, or LangChain, which provide document version control and production-grade functionality. 
 
 
 ## Triage flow
-We employ a three-stage triage system to drive callers towards their desired information.   
+We directly answer users questions, unless GPT-4 is not confident in our search results and deems them unfitting. In these cases we immediately
+redirect the user to a qualified expert.
 ### Stage 1: 
-We match the parsed question against all FAQs from the homepage. If the question’s semantic similarity to elements from FAQs is above a threshold, indicating that we can be relatively certain this is what the user is asking, we take the top scoring questions and answers from FAQ and ask ChatGPT to compile a full answer to the user. This post-refining makes sure we address as much as possible of the users concern.
+We match the parsed question against all FAQs and contents from the homepage.
+If the question has semantic similarity to elements from this datastore, 
+indicating that we can be relatively certain this is what the user is asking, 
+we take the top scoring questions and answers from FAQ and ask ChatGPT to compile a full answer to the user. This post-refining makes sure we address as much as possible of the users concern.
 
-  
 ### Stage 2: 
-If Stage 1 fails, meaning we have no FAQ knowledge where we can confidently answer the question directly, we match against all Pages in the St. Gallen homepage and infer the departments that are most likely to be helpful to the user (above a threshold of semantic similarity). We ask the user if these departments are helpful and forward the call if so. If not, we route to the central landing line (where they would currently land).
+If Stage 1 fails, meaning we have no FAQ knowledge where we can confidently
+answer the question directly, we redirect the caller to the most qualified employee based on the search results.
 
-### Stage 3: 
-The question yields no significant hits in any database. We ask the user once to rephrase the question, run the triage again, and if we land in Stage 3 again, we redirect to central landing hotline. 
+### Stage 3:
+If we can't find a suitable expert the caller is redirected the front desk.
 
 
 
