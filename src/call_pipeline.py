@@ -35,8 +35,11 @@ def respond_to_caller():
     answers,questions = filter_hits_threshold(answers=answers,questions=questions,scores=dists,threshold=0.5)
     summary_str = create_summary_str(answers=answers,questions=questions,original_question=caller_response)
     logger.debug(summary_str)
-    ai_summary = call_endpoints.summarize_search(summary_str)
-    logger.debug(ai_summary)
+    result_comparison = call_endpoints.compare_result_to_query(result_comparison=summary_str)
+    logger.debug(result_comparison)
+    if result_comparison == "Match":
+        ai_summary = call_endpoints.summarize_search(search_results_summary=summary_str)
+        logger.debug(ai_summary)
 
     # Convert the chatbots answer back to voice
     response_file = call_endpoints.convert_answer_to_audio(ai_summary, output_dir)

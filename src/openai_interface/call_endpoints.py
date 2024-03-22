@@ -39,6 +39,26 @@ def convert_answer_to_audio(answer: str, speech_output_dir) -> str:
     return speech_file_path
 
 
+def compare_result_to_query(result_comparison: str) -> str:
+    """
+    Pass the results of our search to openai to evaluate if the result matches with the query
+    :param result_comparison: A string with the response to, wether the search result matches the query
+    :return: The text of the answer
+    """
+    response = client.chat.completions.create(
+        model="gpt-4-turbo-preview",
+        messages=[
+            {"role": "system",
+             "content": " Du bist ein assistent und im Folgenden gibt es ein Query eines Users, und dazu einige"
+             "Textausschnitte, die dazu passen könnten. Falls die Textausschnitte die Frage des Users beantworten können,"
+             "antwortest du 'Match'. Falls die Textausschnitte nicht übereinstimmen, gebe 'kein Match' zurück."},
+            {"role": "user", "content": result_comparison},
+        ]
+    )
+
+    return response.choices[0].message.content
+
+
 def summarize_search(search_results_summary: str) -> str:
     """
     Pass the results of our search to openai to summarize it
@@ -48,9 +68,10 @@ def summarize_search(search_results_summary: str) -> str:
     response = client.chat.completions.create(
         model="gpt-4-turbo-preview",
         messages=[
-            {"role": "system", "content": "Du bist ein freundlicher, hilfsbereiter Mitarbeiter der Kanton Verwaltung von St Gallen in der Schweiz und"
-                                          "möchtest Kunden bestmöglich ihre Suchergebnisse erklären. Du gibt kurze und präzise Antworten. Du triffst deine"
-                                          "Antworten basierend auf den top ergebnissen einer vorherigen suche"},
+            {"role": "system",
+             "content": " Du bist ein assistent und im Folgenden gibt es ein Query eines Users, und dazu einige"
+             "Textausschnitte, die dazu passen könnten. Fasse in maximal zwei Sätzen nur die Inhalte aus den"
+             "Textausschnitten zusammen, die zu dem Query des Users passen."},
             {"role": "user", "content": search_results_summary},
         ]
     )
@@ -61,7 +82,7 @@ def summarize_search(search_results_summary: str) -> str:
 def check_satisfaction(customer_satisfaction_answer: str) -> str:
     """
     Pass the results of our search to openai to evaluate if the customer wants to be connected to a human
-    :param search_results_summary: A string with the response to, whether the customer was satisfied or not
+    :param customer_satisfaction_answer: A string with the response to, whether the customer was satisfied or not
     :return: The text of the answer
     """
     response = client.chat.completions.create(
@@ -72,6 +93,26 @@ def check_satisfaction(customer_satisfaction_answer: str) -> str:
                         " mit einem menschlichen Mitarbeiter verbunden werden möchte. Wenn der kunde auflegen möchte antwortest du 'Nein'."
                         " Ist Kunde frustiert antworte JA. Der Wunsch auf zulegen oder nicht weiter zu telefonieren ist wichtiger"},
             {"role": "user", "content": customer_satisfaction_answer},
+        ]
+    )
+
+    return response.choices[0].message.content
+
+
+def forward_to_employee(customer_redirection_prompt: str) -> str:
+    """
+    Pass the results of our search to openai to summarize it
+    :param search_results_summary: A dictionary consisting of Name, Amt und Telefonnummer
+    :return: The text of the answer
+    """
+    response = client.chat.completions.create(
+        model="gpt-4-turbo-preview",
+        messages=[
+            {"role": "system",
+             "content": " Du bist ein höflicher Assistent, der Clienten am Telefon zu einem passenden Ansprechpartner"
+                        " weiterleiten soll. Du bekommst folgende drei Angaben: Name, Amt und Telefonnummer."
+                        " Falls der Name nicht vorhanden sein sollte, nenne nur das Amt und die dazugehörige Telefonnummer."},
+            {"role": "user", "content": customer_redirection_prompt},
         ]
     )
 
