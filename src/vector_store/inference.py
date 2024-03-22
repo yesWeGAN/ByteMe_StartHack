@@ -110,7 +110,7 @@ class KNNSimpleInference:
         """This is here to load a stack of tensors (embedded strings from LLM)"""
         try:
             tensor_stack_file = next(
-                iter(Path(self.inputpath).rglob(f"{regex}_embed_stack.pt"))
+                iter(Path(self.inputpath).rglob(f"*.pt"))
             )
             return torch.load(tensor_stack_file)
         except:
@@ -186,8 +186,8 @@ class KNNSimpleInference:
 # TODO:
 
 if __name__ == "__main__":
-    raw_data_path = "/home/benjaminkroeger/Documents/Hackathons/StartHack24/ByteMe_StartHack/src/json_files/kb"
-    simpleInf = KNNSimpleInference(    inputpath=raw_data_path,
+    raw_data_path = "/home/benjaminkroeger/Documents/Hackathons/StartHack24/ByteMe_StartHack/src/cpl"
+    simpleInf = KNNSimpleInference(inputpath=raw_data_path,
         outputpath="src/index_files",
         index_of_what='q'
     )
