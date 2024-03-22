@@ -30,7 +30,7 @@ class KNNIndexInference:
         self.dataset = dataset
         self.index = self.find_indexfile()
         self.clear_snippets = self.find_jsonfile(regex="snippets")
-        self.contact_persons = self.find_jsonfile(regex="contacts")
+        self.contact_persons = self.find_jsonfile(regex="paths")
 
     def find_indexfile(self):
         try:
