@@ -57,4 +57,5 @@ def respond_to_caller():
         logger.debug('Forwarding client')
         pass
     else:
+        play_audio(r'/home/benjaminkroeger/Documents/Hackathons/StartHack24/ByteMe_StartHack/src/Hangup_phrase.wav')
         logger.debug('Terminating Call')
