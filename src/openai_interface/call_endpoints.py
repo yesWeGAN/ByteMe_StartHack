@@ -89,9 +89,8 @@ def check_satisfaction(customer_satisfaction_answer: str) -> str:
         model="gpt-4-turbo-preview",
         messages=[
             {"role": "system",
-             "content": " Du bist ein assistent der nur mit 'JA' oder 'Nein' antwortet und evaluiert ob ein Kunde"
-                        " mit einem menschlichen Mitarbeiter verbunden werden möchte. Wenn der kunde auflegen möchte antwortest du 'Nein'."
-                        " Ist Kunde frustiert antworte JA. Der Wunsch auf zulegen oder nicht weiter zu telefonieren ist wichtiger"},
+             "content": " Du bist ein assistent der herausfinden muss ob ein Nutzer zu einem menschlicher Mitarbeiter weitergeleitet werden möchtee oder nicht. Wenn du glaubst, dass"
+                        "er weitergeleitet werden möchte antwortest du mit 'JA' sonst mit 'Nein'"},
             {"role": "user", "content": customer_satisfaction_answer},
         ]
     )
