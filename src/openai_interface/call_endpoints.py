@@ -31,7 +31,7 @@ def convert_answer_to_audio(answer: str, speech_output_dir) -> str:
     speech_file_path = os.path.join(speech_output_dir, "speech.mp3")
     response = client.audio.speech.create(
         model="tts-1",
-        voice="alloy",
+        voice="shimmer",
         input=answer
     )
 
@@ -46,10 +46,11 @@ def summarize_search(search_results_summary: str) -> str:
     :return: The text of the answer
     """
     response = client.chat.completions.create(
-        model="gpt-3.5-turbo-0125",
+        model="gpt-4-turbo-preview",
         messages=[
             {"role": "system", "content": "Du bist ein freundlicher, hilfsbereiter Mitarbeiter der Kanton Verwaltung von St Gallen in der Schweiz und"
-                                          "möchtest Kunden bestmöglich ihre Suchergebnisse erklären. Du gibt kurze und präzise Antworten"},
+                                          "möchtest Kunden bestmöglich ihre Suchergebnisse erklären. Du gibt kurze und präzise Antworten. Du triffst deine"
+                                          "Antworten basierend auf den top ergebnissen einer vorherigen suche"},
             {"role": "user", "content": search_results_summary},
         ]
     )
@@ -64,12 +65,12 @@ def check_satisfaction(customer_satisfaction_answer: str) -> str:
     :return: The text of the answer
     """
     response = client.chat.completions.create(
-        model="gpt-3.5-turbo-0125",
+        model="gpt-4-turbo-preview",
         messages=[
             {"role": "system",
-             "content": "Du bist ein assistent der nur mit 'JA' oder 'Nein' antwortet und evaluiert ob ein Kunde"
-                        " mit einem menschlichen Mitarbeiter verbunden werden möchte.Du antwortest Ja wenn der Kunde unzufrieden ist, allerdings mit"
-                        " Nein wenn er äußert, dass er auflegen möchte"},
+             "content": " Du bist ein assistent der nur mit 'JA' oder 'Nein' antwortet und evaluiert ob ein Kunde"
+                        " mit einem menschlichen Mitarbeiter verbunden werden möchte. Wenn der kunde auflegen möchte antwortest du 'Nein'."
+                        " Ist Kunde frustiert antworte JA. Der Wunsch auf zulegen oder nicht weiter zu telefonieren ist wichtiger"},
             {"role": "user", "content": customer_satisfaction_answer},
         ]
     )
