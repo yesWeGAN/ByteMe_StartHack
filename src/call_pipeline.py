@@ -7,7 +7,7 @@ from speech_utils.record_voice import Recorder
 from speech_utils.speech_to_text import record_and_transcribe
 from utils.audio_conversion import convert_mp3_to_wav, play_audio
 from utils.logger import get_logging_config
-from utils.hit_filtering import filter_hits_threshold,create_summary_str,restructure_contact_urls
+from utils.hit_filtering import filter_hits_threshold,create_summary_str,restructure_contact_urls,get_best_contact
 from vector_store.inference import KNNSimpleInference, KNNIndexInference
 
 logging.config.dictConfig(get_logging_config())
@@ -18,13 +18,13 @@ input_dir = r'/home/benjaminkroeger/Documents/Hackathons/StartHack24/ByteMe_Star
 output_dir = r'/home/benjaminkroeger/Documents/Hackathons/StartHack24/ByteMe_StartHack/audio_out'
 recorder = Recorder(input_dir)
 
-raw_data_path = "/home/benjaminkroeger/Documents/Hackathons/StartHack24/ByteMe_StartHack/src/cpl"
-indexInf = KNNIndexInference(dataset="/home/benjaminkroeger/Documents/Hackathons/StartHack24/ByteMe_StartHack/src/cpl",
+
+indexInf = KNNIndexInference(dataset="/home/benjaminkroeger/Documents/Hackathons/StartHack24/ByteMe_StartHack/src/index",
                              outputpath="src/index_files")
 
 def respond_to_caller():
     # greet the user with a prerecorded message
-    play_audio(r'/home/benjaminkroeger/Documents/Hackathons/StartHack24/ByteMe_StartHack/src/St_gallen_welcome.wav')
+    # play_audio(r'/home/benjaminkroeger/Documents/Hackathons/StartHack24/ByteMe_StartHack/src/St_gallen_welcome.wav')
     caller_response = record_and_transcribe(recorder=recorder)
 
     # sort search results
@@ -38,7 +38,11 @@ def respond_to_caller():
     pattern = re.compile("kein", re.IGNORECASE)
     if re.search(pattern,ai_summary):
         filtered_identifiers = restructure_contact_urls(faiss_seperator='_',contact_dict_seperator='/',filenames=questions)
-
+        best_contact = get_best_contact(filtered_identifiers)
+        response_text = call_endpoints.forward_to_employee(best_contact)
+        response_file = call_endpoints.convert_answer_to_audio(response_text,output_dir)
+        response_file_wav = convert_mp3_to_wav(response_file)
+        play_audio(response_file_wav)
         return
 
     # Convert the chatbots answer back to voice
@@ -58,6 +62,12 @@ def respond_to_caller():
     pattern_yes = re.compile('.*ja.*', re.IGNORECASE)
     if re.search(pattern_yes, see_human):
         logger.debug('Forwarding client')
+        filtered_identifiers = restructure_contact_urls(faiss_seperator='_', contact_dict_seperator='/', filenames=questions)
+        best_contact = get_best_contact(filtered_identifiers)
+        response_text = call_endpoints.forward_to_employee(best_contact)
+        response_file = call_endpoints.convert_answer_to_audio(response_text,output_dir)
+        response_file_wav = convert_mp3_to_wav(response_file)
+        play_audio(response_file_wav)
     else:
         play_audio(r'/home/benjaminkroeger/Documents/Hackathons/StartHack24/ByteMe_StartHack/src/Hangup_phrase.wav')
         logger.debug('Terminating Call')

@@ -99,7 +99,7 @@ def check_satisfaction(customer_satisfaction_answer: str) -> str:
     return response.choices[0].message.content
 
 
-def forward_to_employee(customer_redirection_prompt: str) -> str:
+def forward_to_employee(customer_redirection_prompt: dict) -> str:
     """
     Pass the results of our search to openai to summarize it
     :param search_results_summary: A dictionary consisting of Name, Amt und Telefonnummer
@@ -112,7 +112,7 @@ def forward_to_employee(customer_redirection_prompt: str) -> str:
              "content": " Du bist ein höflicher Assistent, der Clienten am Telefon zu einem passenden Ansprechpartner"
                         " weiterleiten soll. Du bekommst folgende drei Angaben: Name, Amt und Telefonnummer."
                         " Falls der Name nicht vorhanden sein sollte, nenne nur das Amt und die dazugehörige Telefonnummer."},
-            {"role": "user", "content": customer_redirection_prompt},
+            {"role": "user", "content": str(customer_redirection_prompt)},
         ]
     )
 
