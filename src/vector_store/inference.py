@@ -12,7 +12,7 @@ from sentence_transformers import SentenceTransformer
 import scipy
 
 class KNNIndexInference:
-    def __init__(self, dataset: str, embedding_model: str = "sentence-transformers/all-MiniLM-L12-v2", max_tokens = 50, outputpath: str =None, batchsize: int=100):
+    def __init__(self, dataset: str, embedding_model: str = "sentence-transformers/all-MiniLM-L12-v2", max_tokens = 50, outputpath: str =None):
         """Base class to do inference with a text-query against existing index.
 
         Args:
@@ -26,11 +26,29 @@ class KNNIndexInference:
         else:
             self.outputpath = os.path.join(self.query, "knn_result")    # default output 
         self.embedder = self._setup_embedder(model_identifier=embedding_model, max_tokens=max_tokens)
-        self.batchsize = batchsize
+        # self.batchsize = batchsize
         self.dataset = dataset
         self.index = self.find_indexfile()
-        self.clear_snippets = self.find_jsonfile(regex="snippets")
-        self.contact_persons = self.find_jsonfile(regex="paths")
+        self.clear_input_questions = self.load_json(regex="questions")
+        self.clear_paths = self.load_json(regex="paths")
+        self.embedder = self._setup_embedder(model_identifier="intfloat/multilingual-e5-large-instruct", max_tokens=500)
+    
+    def load_json(self, regex: str):
+        """Load a json-file that contains the clear-text questions/answers (not the embeds).
+        We need it to retrieve actual strings based on an index from KNN.
+
+        Args:
+            regex (str): indication if to load the questions or answers
+
+        Returns:
+            _type_: JSON file content.
+        """
+        try:
+            json_file = next(iter(Path(self.inputpath).rglob(f"*{regex}*.json")))
+            return json.load(open(json_file, "r"))
+        except:
+            print(f"No json file found for: {regex}*.json")
+
 
     def find_indexfile(self):
         try:
@@ -81,12 +99,28 @@ class KNNIndexInference:
         distances, neighbors = self.index.search(vectors, k)
         return distances, neighbors
     
-    def run_inference(self, query: str, max_tokens: int = 50, k=5):
+    def run_inference(self, query: str, max_tokens: int = 500, k=5, printprop=True):
         """under construction still"""
         query_tensor = self.embed_query(query=query, max_tokens=max_tokens)
         dist, neighbors = self.search_full_index(query_tensor, k)
-        jsonf = self.find_jsonfile()    # this is the matching from an index in the search-index to a file / question / topic / department
-        knn_imagepaths = [Path(jsonf[str(neighbor)]) for neighbor in neighbors[0]]
+        print(dist)
+        print(neighbors)
+        result_distances = []
+        result_questions = []
+        result_paths = []
+        # result_answers = []
+        for idx in neighbors:
+            if printprop:
+                print(f"The cosine similarity score for the following Q-A-pair is: {(1-dist[idx])})")
+                print(self.clear_input_questions[idx].strip())
+                print(self.clear_paths[idx].strip())
+            result_distances.append(1-dist[idx])
+            result_questions.append(self.clear_input_questions[idx].strip())
+            result_paths.append(self.clear_paths[idx].strip())
+            
+        return result_paths, result_questions, result_distances
+            
+        
 
 
 class KNNSimpleInference:
@@ -103,7 +137,7 @@ class KNNSimpleInference:
         self.writepath = os.path.join(self.inputpath.parent, "index")
         self.vectors = self.load_stacked_tensors(regex=index_of_what)
         self.clear_input_questions = self.load_json(regex="questions")
-        # self.clear_input_answers = self.load_json(regex="answers")
+        self.clear_paths = self.load_json(regex="paths")
         self.embedder = self._setup_embedder(model_identifier="intfloat/multilingual-e5-large-instruct", max_tokens=500)
 
     def load_stacked_tensors(self, regex: str):
@@ -156,7 +190,7 @@ class KNNSimpleInference:
             k (int, optional): Number of samples to return. Defaults to 5.
 
         Returns:
-            _type_: Thruple of lists: List of Answers (str), List Of Questions (str), List of distances (float)
+            _type_: Thruple of lists: List of paths where match occurs (str), List Of Texts (str), List of distances (float)
         """
         queries = [query]
         query_embeddings = self.embedder.encode(queries)
@@ -171,6 +205,7 @@ class KNNSimpleInference:
                 print("\nTop 5 most similar sentences in corpus:")
             result_distances = []
             result_questions = []
+            result_paths = []
             # result_answers = []
             for idx, distance in results[0:k]:
                 if printprop:
@@ -179,9 +214,9 @@ class KNNSimpleInference:
                     # print(self.clear_input_answers[idx].strip())
                 result_distances.append(1-distance)
                 result_questions.append(self.clear_input_questions[idx].strip())
-                #result_answers.append(self.clear_input_answers[idx].strip())
+                result_paths.append(self.clear_paths[idx].strip())
             
-        return None, result_questions, result_distances
+        return result_paths, result_questions, result_distances
             
 # TODO:
 
@@ -192,3 +227,7 @@ if __name__ == "__main__":
         index_of_what='q'
     )
     simpleInf.inference(query="Ich will einen Jagdschein machen was muss ich tun", k=5)
+
+    indexInf= KNNIndexInference(dataset="/home/benjaminkroeger/Documents/Hackathons/StartHack24/ByteMe_StartHack/src/cpl",
+                                outputpath="src/index_files")
+    indexInf.run_inference(query="Ich will einen Jagdschein machen was muss ich tun", k=5)
