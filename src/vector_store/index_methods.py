@@ -30,7 +30,7 @@ class KNNIndexTrainer:
         """This is here to load a stack of tensors (embedded strings from LLM)"""
         try:
             tensor_stack_file = next(
-                iter(Path(self.inputpath).rglob(f"{regex}_embed_stack.pt"))
+                iter(Path(self.inputpath).rglob("*.pt"))
             )
             return torch.load(tensor_stack_file)
         except:
@@ -86,16 +86,16 @@ class KNNIndexTrainer:
             os.remove(block)
 
 
-raw_data_path = "raw_stacks"
+raw_data_path = r"/home/benjaminkroeger/Documents/Hackathons/StartHack24/ByteMe_StartHack/src/cpl"
 
 trainer = KNNIndexTrainer(
     inputpath=raw_data_path,
-    batchsize=100,
-    outputpath="src/index_files",
+    batchsize=2000,
+    outputpath=r"/home/benjaminkroeger/Documents/Hackathons/StartHack24/ByteMe_StartHack/src/cpl",
     index_of_what='q'
 )
-len(trainer.clear_input_answers)    # 125
-# trainer.build_index()   # will fail for few samples (at least 350 samples for IVF10)
+#len(trainer.clear_input_answers)    # 125
+trainer.build_index()   # will fail for few samples (at least 350 samples for IVF10)
 
 
 

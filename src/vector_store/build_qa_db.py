@@ -13,9 +13,11 @@ index = 0
 questions = []
 answers = []
 embedded_questions = []
+
 for json_file in json_files:
     try:
-        data = json.load(open(json_file, "r"))
+        data = json.load(open(json_file, "r",encoding='utf-8'))
+
         assert isinstance(data[0], str), "First element is not a string!"
         elements = data[0].split(".ch/")[-1].split(".html")[0].split("/")
         print(f"Elements are: {elements}")
@@ -27,6 +29,11 @@ for json_file in json_files:
             else:
                 join_tags = "Bezüglich: "+", ".join(elements)+" "
             tagged_question = join_tags+" Frage: " + sub_dict["question"]+" Antwort: "+sub_dict["answer"]
+
+            special_chars = {'ä': 'ae', 'ö': 'oe', 'ü': 'ue', 'Ä': 'Ae', 'Ö': 'Oe', 'Ü': 'Ue'}
+            for ch, repl in special_chars.items():
+                tagged_question = tagged_question.replace(ch, repl)
+
             questions.append(tagged_question)
             # answers.append(sub_dict["question"])
     except:
@@ -35,7 +42,7 @@ print(questions)
 # embed questions
 questions_embeddings = model.encode(questions)
 # dump original questions
-with open(json_dir+"/all_questions.json",'w') as outfile:
+with open(json_dir+"/all_questions.json",'w',encoding='utf-8') as outfile:
   json.dump(questions, outfile)
 
 # dump the embedding stack

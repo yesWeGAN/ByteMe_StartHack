@@ -103,14 +103,14 @@ class KNNSimpleInference:
         self.writepath = os.path.join(self.inputpath.parent, "index")
         self.vectors = self.load_stacked_tensors(regex=index_of_what)
         self.clear_input_questions = self.load_json(regex="questions")
-        self.clear_input_answers = self.load_json(regex="answers")
-        self.embedder = self._setup_embedder(model_identifier="multilingual-e5-large-instruct", max_tokens=500)
+        # self.clear_input_answers = self.load_json(regex="answers")
+        self.embedder = self._setup_embedder(model_identifier="intfloat/multilingual-e5-large-instruct", max_tokens=500)
 
     def load_stacked_tensors(self, regex: str):
         """This is here to load a stack of tensors (embedded strings from LLM)"""
         try:
             tensor_stack_file = next(
-                iter(Path(self.inputpath).rglob(f"{regex}_embed_stack.pt"))
+                iter(Path(self.inputpath).rglob(f"*.pt"))
             )
             return torch.load(tensor_stack_file)
         except:
@@ -176,17 +176,19 @@ class KNNSimpleInference:
                 if printprop:
                     print(f"The cosine similarity score for the following Q-A-pair is: {(1-distance)})")
                     print(self.clear_input_questions[idx].strip())
-                    print(self.clear_input_answers[idx].strip())
+                    # print(self.clear_input_answers[idx].strip())
                 result_distances.append(1-distance)
                 result_questions.append(self.clear_input_questions[idx].strip())
                 #result_answers.append(self.clear_input_answers[idx].strip())
             
         return None, result_questions, result_distances
             
-# TODO: 
-raw_data_path = "src/raw_stacks"
-simpleInf = KNNSimpleInference(    inputpath=raw_data_path,
-    outputpath="src/index_files",
-    index_of_what='q'
-)
-simpleInf.inference(query="Ich werde beschuldigt, kann ich einen Anwalt einschalten?", k=5)
+# TODO:
+
+if __name__ == "__main__":
+    raw_data_path = "/home/benjaminkroeger/Documents/Hackathons/StartHack24/ByteMe_StartHack/src/cpl"
+    simpleInf = KNNSimpleInference(inputpath=raw_data_path,
+        outputpath="src/index_files",
+        index_of_what='q'
+    )
+    simpleInf.inference(query="Ich will einen Jagdschein machen was muss ich tun", k=5)
