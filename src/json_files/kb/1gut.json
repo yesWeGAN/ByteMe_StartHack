@@ -1,0 +1,55 @@
+[
+
+"https://www.sg.ch/recht/staatsanwaltschaft-jugendanwaltschaft/strafverfahren/faq.html",
+
+  {
+    "keywords": ["von beschuldigten Personen"],
+    "question": "Muss ich einer Vorladung Folge leisten?",
+    "answer": "Ja. Die beschuldigte Person ist zwar nicht zur Aussage verpflichtet, muss aber auf Vorladung doch erscheinen. Sie kann sonst polizeilich vorgeführt werden."
+  },
+  {
+    "keywords": ["von beschuldigten Personen"],
+    "question": "Kann ich bei Einvernahmen einen Anwalt beiziehen?",
+    "answer": "Ja, und zwar schon ab der ersten polizeilichen Einvernahme. Die Geltendmachung dieses Rechts gibt allerdings keinen Anspruch auf Verschiebung der Einvernahme."
+  },
+  {
+    "keywords": ["von beschuldigten Personen"],
+    "question": "Wie finde ich eine Anwältin/einen Anwalt?",
+    "answer": "Hier finden Sie einen Anwalt. St.Gallischer Anwaltsverband neues Fenster"
+  },
+  {
+    "keywords": ["von beschuldigten Personen"],
+    "question": "Wer bezahlt meinen Anwalt?",
+    "answer": "Den Vorschuss muss die beschuldigte Person selbst bezahlen; nur wenn diese bedürftig ist und es um eine schwere Straftat geht, besteht ein Anspruch auf amtliche Verteidigung."
+  },
+  {
+    "keywords": ["von Privatklägern / Opfern"],
+    "question": "Wo und in welcher Form kann ich Strafanzeige einreichen?",
+    "answer": "Jede Person ist berechtigt, Straftaten bei der Polizei oder bei der Staatsanwaltschaft anzuzeigen."
+  },
+  {
+    "keywords": ["von Privatklägern / Opfern"],
+    "question": "Sieht die beschuldigte Person, was ich in meiner Anzeige ausgesagt habe?",
+    "answer": "Ja. Sie kann allenfalls auch eine direkte Konfrontationseinvernahme mit Personen verlangen, die sie belasten. In besonderen Fällen besteht die Möglichkeit, eine Aussage anonym zu machen; das setzt aber eine ernsthafte Gefährdung des Befragten voraus."
+  },
+  {
+    "keywords": ["von Privatklägern / Opfern"],
+    "question": "Werde ich informiert, wie es weitergeht, wenn ich eine Anzeige gemacht habe?",
+    "answer": "Die Privatkläger haben – wie die beschuldigte Person – Anspruch auf rechtliches Gehör, d.h. sie können im Rahmen des Gesetzes die Akten einsehen, an Verfahrenshandlungen teilnehmen, sich zur Sache und zum Verfahren äussern und Beweisanträge stellen."
+  },
+  {
+    "keywords": ["von Zeugen"],
+    "question": "Muss ich einer Vorladung Folge leisten?",
+    "answer": "Ja. Egal ob man nichts sagen will, nichts sagen kann oder gar nicht weiss, worum es geht, muss der Zeuge einer Vorladung Folge leisten und kann sonst von der Polizei vorgeführt werden. Der Zeuge ist verpflichtet, wahrheitsgemäss und vollständig auszusagen."
+  },
+  {
+    "keywords": ["von Zeugen"],
+    "question": "Ich bin während der Arbeitszeit als Zeuge aufgeboten. Muss ich trotzdem gehen?",
+    "answer": "Ja. Es handelt sich um eine gesetzliche Pflicht. Der Arbeitgeber ist deshalb verpflichtet, dem Arbeitnehmer ohne Lohnabzug frei zu geben."
+  },
+  {
+    "keywords": ["von Zeugen"],
+    "question": "Kann ich mich von einem Anwalt begleiten lassen?",
+    "answer": "Der Zeuge kann zur Wahrung seiner Interessen auf eigene Kosten einen Rechtsbeistand bestellen. Dieser ist i.d.R. allerdings nicht befugt, an der Einvernahme teilzunehmen."
+  }
+]

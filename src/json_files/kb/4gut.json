@@ -1,0 +1,80 @@
+[
+
+"https://www.sg.ch/umwelt-natur/jagd-fischerei/webshop-efj/webshop-faq.html",
+
+  {
+"keywords": ["Webshop FAQ", "Anmelden oder Registrieren"],
+"question": "Ich weiss nicht, ob meine Kundendaten schon im Webshop erfasst sind oder nicht. Soll ich mich einfach registrieren?",
+"answer": "Nein. Wenn Sie bereits früher im Kanton St.Gallen auf die Jagd gegangen sind oder gefischt haben, sind ihre Daten bereits registriert, inkl. Jagdprüfung und/oder SaNa-Ausweis. Melden Sie sich an und drücken Sie auf den Link 'Benutzerdaten nicht bekannt oder vergessen'."
+},
+{
+"keywords": ["Webshop FAQ", "Anmelden oder Registrieren"],
+"question": "Ich kann das Produkt, das ich will, nicht lösen. Warum?",
+"answer": "Für einige Produkte brauchen Sie bestimmte Prüfungen, z.B. die Jagdprüfung. Das System kontrolliert, ob diese Regel erfüllt ist. Wenn Sie sich als Neukunden registrieren, wird ein neuer Datensatz angelegt. Darin ist ihre Jagdprüfung nicht gespeichert, weil dazu der Jagdfähigkeitsausweis dem ANJF eingereicht werden muss, um ihn registrieren zu lassen. Falls Sie Ihren Jagdausweis bereits früher eingereicht haben, melden Sie sich beim ANJF."
+},
+{
+"keywords": ["Webshop FAQ", "Für andere im Webshop einkaufen"],
+"question": "Kann ein Revierpächter oder ein Obmann für seine Gäste Jagdpässe im Webshop lösen?",
+"answer": "Nein. Jagdpässe sind persönlich und nicht übertragbar. Deshalb muss jede Person ein eigenes Login erstellen."
+},
+{
+"keywords": ["Webshop FAQ", "Für andere im Webshop einkaufen"],
+"question": "Ich habe keinen Zugang zum Internet. Kann ein Kollege für mich im Webshop das Patent lösen?",
+"answer": "Nein. Jagdpässe sind persönlich und nicht übertragbar. Deshalb muss jede Person ein eigenes Login erstellen."
+},
+{
+"keywords": ["Webshop FAQ", "Ausweis unleserlich oder verloren"],
+"question": "Mein Jagdpass ist nass und unleserlich geworden. Was kann ich tun?",
+"answer": "In Ihrem Benutzerkonto im Webshop sind alle von Ihnen erworbenen Produkte gespeichert. Sie können jederzeit eine Kopie ausdrucken."
+},
+{
+"keywords": ["Webshop FAQ", "Ausweis unleserlich oder verloren"],
+"question": "Ich habe meinen Jagdausweis für ein Pachtjahr oder meinen Pächterausweis (Kärtchen) verloren. Was kann ich tun?",
+"answer": "Melden Sie sich beim ANJF. Sie erhalten kostenlos ein Duplikat Ihres Jahres-Jagdausweises oder Pächterausweises."
+},
+{
+"keywords": ["Webshop FAQ", "Ausweis unleserlich oder verloren"],
+"question": "Mein Fischereipatent ist nass und unleserlich geworden. Was kann ich tun?",
+"answer": "In Ihrem Benutzerkonto im Webshop sind alle von Ihnen erworbenen Produkte gespeichert. Sie können jederzeit eine Kopie ausdrucken. Wenn Sie das Patent bei einer Ausgabestelle bezogen haben, melden Sie sich dort telefonisch oder am Schalter. Auch beim ANJF kann man Ihnen weiterhelfen."
+},
+{
+"keywords": ["Webshop FAQ", "Ausweis unleserlich oder verloren"],
+"question": "Ich habe mein Patent verloren. Was muss ich tun?",
+"answer": "In Ihrem Benutzerkonto im Webshop sind alle von Ihnen erworbenen Produkte gespeichert. Sie können jederzeit eine Kopie ausdrucken."
+},
+{
+"keywords": ["Webshop FAQ", "Einkauf ohne Kreditkarte"],
+"question": "Ich habe zwar Internet, will aber nicht mit Kreditkarte oder TWINT bezahlen. Kann ich trotzdem im Webshop einkaufen?",
+"answer": "Nein. Der Webshop akzeptiert ausschliesslich Kreditkartenzahlungen oder TWINT. Sie müssen Ihr Fischereipatent bei der Ausgabestelle vor Ort beziehen. Jagdausweise erhalten Sie bei ANJF gegen Rechnung."
+},
+{
+"keywords": ["Webshop FAQ", "Akzeptierte Kreditkarten / TWINT"],
+"question": "Welche Kreditkarten und Zahlungsarten werden akzeptiert?",
+"answer": "VISA, MasterCard, PostFinance Pay und TWINT."
+},
+{
+"keywords": ["Webshop FAQ", "Ich habe meinen Ausweis oder mein Patent nicht nutzen können"],
+"question": "Am Tag der Jagd lag Schnee und sie wurde abgesagt. Wie erhalte ich den Kaufpreis wieder zurück?",
+"answer": "Es gibt keine Rückerstattung des Kaufpreises. Mit dem Kauf im Webshop haben Sie einen Kaufvertrag abgeschlossen und keinen Anspruch darauf, von diesem zurückzutreten. Ein Recht auf Umtausch oder Rückgabe des Jagdausweises gibt es nicht."
+},
+{
+"keywords": ["Webshop FAQ", "Ich habe meinen Ausweis oder mein Patent nicht nutzen können"],
+"question": "Ich habe zwar ein Fischereipatent gelöst, bin jedoch nicht zum Fischen gegangen. Muss ich nun den Kaufpreis trotzdem bezahlen?",
+"answer": "Ja. Gekauft ist gekauft, lautet die Regel. Mit dem Kauf im Webshop haben Sie einen Kaufvertrag abgeschlossen und keinen Anspruch darauf, von diesem zurückzutreten. Ein Recht auf Umtausch oder Rückgabe des Patentes gibt es nicht."
+},
+{
+"keywords": ["Webshop FAQ"],
+"question": "Ich habe die Jagdprüfung bestanden und möchte einen Jagdausweis für Gäste mit Fähigkeitsausweis kaufen. Was muss ich tun?",
+"answer": "Vor der erstmaligen Erfassung in der Jagddatenbank eFJ prüfen wir den Jagdfähigkeitsausweis (Prüfungszeugnis). Dieser ist einzusenden an das Amt für Natur, Jagd und Fischerei, Davidstrasse 35, 9001 St.Gallen oder per Mail an info.anjf@sg.ch. Wenn Sie unsicher sind, ob Ihre Personalien bereits im eFJ erfasst sind, geben wir Ihnen gerne Auskunft +41 58 229 39 53."
+},
+{
+"keywords": ["Webshop FAQ", "Kann ich Patente verlängern oder umwandeln"],
+"question": "Ich habe ein Wochenpatent gekauft und will nun ein länger gültiges Patent lösen. Wird mir das Wochenpatent am Kaufpreis angerechnet?",
+"answer": "Nein. Jede Patentart wird zum festgelegten Kaufpreis verkauft."
+},
+{
+"keywords": ["Webshop FAQ", "Kann ich Patente verlängern oder umwandeln"],
+"question": "Ich habe bereits mein Uferpatent gelöst. Nun möchte ich doch lieber ein Bootspatent. Ist ein Upgrade möglich?",
+"answer": "Nein. Jede Patentart wird zum festgelegten Kaufpreis verkauft."
+}
+]
