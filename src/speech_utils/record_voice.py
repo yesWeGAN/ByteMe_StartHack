@@ -60,7 +60,7 @@ class Recorder:
             data = self.stream.read(chunk)
             volume = self.rms(data)
             if volume >= Threshold:
-                if volume >= 60:
+                if volume >= 50:
                     noise_detected = True
                 end = time.time() + TIMEOUT_LENGTH
             elif not noise_detected:
