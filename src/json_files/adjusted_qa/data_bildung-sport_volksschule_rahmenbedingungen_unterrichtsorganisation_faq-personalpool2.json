@@ -1,0 +1,77 @@
+[
+{
+"keywords": ["Stichtag", "Berechnung", "Personalpools"],
+"question": "Welches ist der Stichtag für die Berechnung des Personalpools?",
+"answer": "Die Schulträger bestimmen den lokalen Planungsstichtag selbst. Die Erhebung durch das Bildungsdepartement erfolgt, wie bisher beim Pensenpool für fördernde Massnahmen, zu einem späteren Zeitpunkt, zu welchem die Planung umgesetzt ist."
+},
+{
+"keywords": ["Altersentlastung", "Personalpool"],
+"question": "Wie wird die Altersentlastung beim Personalpool berücksichtigt?",
+"answer": "Der Personalpool umfasst sämtliche Lektionen, die die Lehrpersonen einer Schule insgesamt unterrichten. Es sind die Lektionen, die im Stundenplan aufgeführt sind und während denen die Lehrpersonen tatsächlich mit den Schülerinnen und Schülern im Unterricht arbeiten. Die weiteren Bereiche des Berufsauftrags (Arbeitsfelder Schülerinnen und Schüler, Schule, Lehrperson) sowie die Altersentlastung sind nicht Teil des Personalpools und werden entsprechend nicht berücksichtigt."
+},
+{
+"keywords": ["Entlastungslektion", "Klassenlehrpersonen", "Personalpool"],
+"question": "Wird die Entlastungslektion der Klassenlehrpersonen beim Personalpool mitgerechnet?",
+"answer": "Nein, denn der Personalpool umfasst nur jene Lektionen, welche die Lehrpersonen einer Schule tatsächlich unterrichten. Flexibilisierungen in andere Arbeitsfelder des Berufsauftrags sind entsprechend nicht zu berücksichtigen."
+},
+{
+"keywords": ["Unterrichtslektionen", "Bestandteil", "Personalpools"],
+"question": "Welche Unterrichtslektionen sind nicht Bestandteil des Personalpools?",
+"answer": "Nicht Teil des Personalpools einer Schule sind die Lektionen, welche durch die Landeskirchen unterrichtet werden: Landeskirchlicher Religionsunterricht und allfällige Wahlfachangebot der als öffentlich-rechtliche Körperschaft anerkannten Religionsgemeinschaften."
+},
+{
+"keywords": ["Unterrichtsassistenzen", "Personalpool"],
+"question": "Werden Unterrichtsassistenzen beim Personalpool berücksichtigt?",
+"answer": "Der Personalpool umfasst das gesamte Unterrichtspensum einer Schule. Assistenzen sind nicht mit Unterrichten gleichzusetzen und werden daher beim Personalpool nicht berücksichtigt."
+},
+{
+"keywords": ["Angebot", "Hausaufgabenhilfe", "Personalpool"],
+"question": "Wo wird das Angebot der Hausaufgabenhilfe verbucht beim Personalpool?",
+"answer": "Hausaufgabenhilfe ist keine verbindliche Aufgabe der St.Galler Volksschule, sondern sie ist ein freiwilliges Angebot für alle Schülerinnen und Schüler und ist daher nicht beim Personalpool zu berücksichtigen. Anders der Nachhilfe-Unterricht, der im Pool Sonderpädagogik zu verbuchen ist."
+},
+{
+"keywords": ["Oberstufe", "Personalpool", "Pools"],
+"question": "In der Oberstufe bestehen – im Gegensatz zu Kindergarten und Primarschule – beim Personalpool drei Pools: Regelunterricht, Wahlfächer/Individuelle Schwerpunkte / Angebote der Schule/Kirchen. Was bedeutet das?",
+"answer": "Der Regelunterricht entspricht der Lektionentafel «Obligatorischer Unterricht». Die dort aufgeführten Fachbereiche und Dotationen sind für alle Schülerinnen und Schüler verbindlich. Der Pool Wahlfächer/Individuelle Schwerpunkte entspricht der gleichnamigen Lektionentafel. Diese führt auf, welche Wahlfächer eine Oberstufe anbieten muss. Sie macht keine Aussage zur Pflicht der Schülerinnen und Schüler."
+},
+{
+"keywords": ["Verschiebung von Lektionen", "Pools"],
+"question": "Gemäss Art. 23 der Weisungen können Lektionen zwischen den Pools Unterricht in Regelklassen der verschiedenen Schulstufen vorgenommen werden. Ist diese Verschiebung auch möglich, wenn Kindergarten/Primarschule und Oberstufe unterschiedliche Schulträger haben?",
+"answer": "Nein. Der Personalpool richtet sich an den einzelnen Schulträger. Verschiebungen zwischen zwei Schulträgern sind nicht möglich."
+},
+{
+"keywords": ["Pro-Kopf-Faktoren"],
+"question": "Welche Informationen benötigt der Schulträger, um die Pro-Kopf-Faktoren für die Schulstufen festzulegen?",
+"answer": "Der Pro-Kopf-Faktor ist keine statische Grösse, die ohne Vorbereitung festgelegt werden kann. Er basiert auf zwei Voraussetzungen: Klassen- und Unterrichtsorganisation, Schülerinnen- und Schülerzahl."
+},
+{
+"keywords": ["Klassengrössen"],
+"question": "Wie verbindlich sind die gesetzlich vorgeschriebenen Klassengrössen?",
+"answer": "Die Klassengrössen sind verbindlich. Gemäss Volksschulgesetz sind jedoch begründete Abweichungen möglich."
+},
+{
+"keywords": ["Pro-Kopf-Faktor", "Anpassung"],
+"question": "Wie oft soll der Pro-Kopf-Faktor angepasst werden?",
+"answer": "Der Pro-Kopf-Faktor hängt von der Klassen- und Unterrichtsorganisation und von der Anzahl Schülerinnen und Schüler ab. Wenn die Schulbehörde im Frühjahr die Unterrichtspensen fürs nächste Schuljahr festlegt und die Anstellungsverträge der Lehrpersonen unterschrieben werden, kann es bis zum Schuljahresbeginn passieren, dass durch Zu- oder Wegzüge die Anzahl der Schulkinder und damit der Pro-Kopf-Faktor schwankt."
+},
+{
+"keywords": ["Pro-Kopf-Faktor", "Regelunterricht", "Stufen"],
+"question": "Wer bestimmt den Pro-Kopf-Faktor für den Regelunterricht der verschiedenen Stufen?",
+"answer": "Die Festsetzung des Unterrichtspensums und somit auch des Pro-Kopf-Faktors je Stufe liegt in der Kompetenz des Schulträgers. Er legt die kommunalen Verfahren fest und bestimmt, welche Entscheide lokal auf welcher Führungsstufe gefällt werden. Es wird empfohlen, bei der Zuweisung der Lektionen zur Klassenteilung an die einzelnen Fachbereiche und Klassen die Lehrpersonen anzuhören und einzubeziehen."
+},
+{
+"keywords": ["Pro-Kopf-Faktoren", "Regelunterricht"],
+"question": "Wie wurden die Pro-Kopf-Faktoren für den Regelunterricht berechnet?",
+"answer": "Die Berechnung der Pro-Kopf-Faktoren basiert auf folgenden Grundlagen: Reglement über die Unterrichtsorganisation vom 29. August 2007 (anwendbar bis Juli 2017), Weisungen zur Klassenbildung in der Volksschule vom 29. August 2007, Rahmenbedingungen zum Lehrplan Volksschule, Lektionentafeln (in Vollzug ab 1. August 2017), Volksschulgesetz: Klassengrössen (Art. 27 VSG)"
+},
+{
+"keywords": ["Pro-Kopf-Faktor", "Mehrklassen"],
+"question": "Weshalb kann der Pro-Kopf-Faktor für den Regelunterricht in der Primarschule um 0.3 erhöht werden, wenn die Schule in Mehrklassen organisiert ist?",
+"answer": "Die Berechnung der Pro-Kopf-Faktoren orientiert sich an den bisherigen Weisungen zur Klassenbildung, anwendbar bis und mit Schuljahr 2016/17. Im Nachtrag dieser Weisungen sind für die einzelnen Klassen die Lehrpersonenpensen aufgeführt. Für Mehrklassen standen bisher mehr Lektionen zur Verfügung, damit beispielsweise der Fremdsprachenunterricht in Jahrgangsgruppen und damit in unterschiedlichen Niveaus erfolgen konnte."
+},
+{
+"keywords": ["Niveau-Unterricht", "Oberstufe"],
+"question": "Kann jede Schule, die Niveau-Unterricht in der Oberstufe führt, den Pro-Kopf-Faktor für den Regelunterricht Oberstufe um 0.2 erhöhen?",
+"answer": "Die Berechnung der Pro-Kopf-Faktoren orientiert sich an den bisherigen Weisungen zur Klassenbildung, anwendbar bis und mit Schuljahr 2016/17. Eine weitere wichtige Grundlage für die Faktoren sind die Lektionentafeln im Lehrplan Volksschule, die per Schuljahr 2017/18 Änderungen erfahren. Bei der Berechnung der Faktoren-Erhöhung für Niveau-Unterricht wurde mit einem Maximal-beispiel gerechnet."
+}
+]

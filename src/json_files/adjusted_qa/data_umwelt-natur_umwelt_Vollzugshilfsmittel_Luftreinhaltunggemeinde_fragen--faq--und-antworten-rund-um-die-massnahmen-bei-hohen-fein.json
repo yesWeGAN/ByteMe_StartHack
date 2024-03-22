@@ -1,0 +1,27 @@
+[
+{
+"keywords": ["Kachelofen", "Feinstaubbelastungen"],
+"question": "Darf ein Kachelofen bei hoher Feinstaubbelastung noch benutzt werden?",
+"answer": "Ja, Holzfeuerungen zur Abdeckung des Grundwärmebedarfs wie Holzschnitzel- und Pelletfeuerungen sowie Kachelöfen fallen nicht unter das Feuerungsverbot der Interventionsstufen. Das Verbot betrifft Zweitheizungen, die vorwiegend zu Komfortzwecken oder als Zusatzheizung dienen, wie Cheminées und Schwedenöfen."
+},
+{
+"keywords": ["Traktor", "Feinstaubbelastungen"],
+"question": "Dürfen Traktoren, die nicht mit einem Partikelfilter ausgerüstet sind, bei hoher Feinstaubbelastung noch fahren?",
+"answer": "Ja, die Zirkulation und der Transport von Gütern im normalen Strassenverkehr sind nicht eingeschränkt. Das Verbot gilt hingegen für alle land- und forstwirtschaftlichen Arbeiten in Feld, Wald und Flur mit dieselbetriebenen Maschinen, Geräten und Fahrzeugen, welche nicht mit einem Partikelfilter ausgerüstet sind."
+},
+{
+"keywords": ["Brauchtumsfeuer", "Feinstaubbelastungen"],
+"question": "Dürfen Brauchtumsfeuer bei hoher Feinstaubbelastung angezündet werden?",
+"answer": "Ja, Grill- und Brauchtumsfeuer sind vom Feuerungsverbot im Freien ausgenommen. Dabei darf allerdings ausschließlich naturbelassenes, trockenes Holz verwendet und dieses so raucharm wie möglich verbrannt werden."
+},
+{
+"keywords": ["Christbaum-Verbrennete", "Feinstaubbelastungen"],
+"question": "Dürfen 'Christbaum-Verbrenneten' bei hoher Feinstaubbelastung durchgeführt werden?",
+"answer": "Nein, wenn eine Interventionsstufe aufgrund hoher Feinstaubbelastungen ausgelöst worden ist, darf keine 'Christbaum-Verbrennete' durchgeführt werden. Es wird davon ausgegangen, dass der Stamm der Christbäume für eine raucharme Verbrennung nicht trocken genug ist."
+},
+{
+"keywords": ["Kontakt", "Amt für Umwelt"],
+"question": "Wie kann das Amt für Umwelt bei offenen Fragen kontaktiert werden?",
+"answer": "Das Amt für Umwelt ist unter der Telefonnummer +41 58 229 30 88 oder der Email-Adresse info.budafu@sg.ch erreichbar. Die Öffnungszeiten sind von 08.00 - 12.00 und 13.30 - 17.00."
+}
+]
