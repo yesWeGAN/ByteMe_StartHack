@@ -1,3 +1,8 @@
+# Running it
+
+- you need to set OPENAI_API_KEY
+- Run the class ```/home/benjaminkroeger/Documents/Hackathons/StartHack24/ByteMe_StartHack/src/gui/pysideapp.py```
+
 # ByteMe: GrüeziBot
  
 A voice chat bot for the canton St. Gallen aimed at providing rapid comprehensive responses or immediate
